@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HADIID INDUSTRIES LTD. | Elite Vehicle Fabrication & Engineering</title>
+    
+    <!-- Google Fonts: Poppins & Teko (Added Teko for consistency with dark theme examples) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Teko:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Assuming your main.css has the light theme styles for the body, sections, etc. -->
+    <link rel="stylesheet" href="main.css">
+
+    <style>
+        /* ==================================================
+           HERO SECTION (DARK THEME) & HEADER INTEGRATION
+           This will override any conflicting hero/header styles from main.css
+        ===================================================== */
+
+        /* --- Color & Font Variables for this Section --- */
+       
+        /* --- Main Hero Section Styling --- */
+        #hero {
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background-color: var(--brand-dark-bg);
+            overflow: hidden;
+        }
+
+        #hero .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        #hero h1 {
+            font-family: var(--font-primary);
+            font-size: 5.5rem;
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--brand-text-main-light);
+        }
+
+        #hero h1 span {
+            color: var(--brand-yellow);
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            color: var(--brand-text-secondary-light);
+            margin: 25px auto 40px auto;
+            max-width: 650px;
+            line-height: 1.7;
+        }
+
+        #hero .btn { /* Overriding button style for dark bg if needed */
+            background: var(--brand-yellow);
+            color: var(--brand-dark-bg);
+            border: 2px solid var(--brand-yellow);
+        }
+        
+        #hero .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 196, 0, 0.2);
+            background: var(--brand-dark-bg);
+            color: var(--brand-yellow);
+        }
+
+        .hero-vehicle-image {
+            display: block;
+            margin: 60px auto 0 auto;
+            max-width: 600px;
+            width: 100%;
+            animation: heroFloat 5s ease-in-out infinite;
+        }
+
+        @keyframes heroFloat {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* --- ANIMATION: BRUSHED STEEL SHIMMER --- */
+        #hero-animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: linear-gradient(280deg, 
+                #111317, 
+                #333842 5%, 
+                #111317 10%, 
+                #111317 20%, 
+                #4d535e 35%, 
+                #111317 50%, 
+                #111317 70%, 
+                #333842 90%, 
+                #111317
+            );
+            background-size: 200% 100%;
+            animation: shimmer 8s linear infinite;
+        }
+
+        @keyframes shimmer {
+            from { background-position: 200% 0; }
+            to { background-position: -200% 0; }
+        }
+        
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 992px) {
+            #hero { height: auto; padding: 120px 0 80px 0; min-height: 0; }
+            #hero h1 { font-size: 4rem; }
+            .hero-vehicle-image { max-width: 500px; }
+        }
+        @media (max-width: 768px) {
+            #hero h1 { font-size: 3.5rem; }
+            #hero p { font-size: 1rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- The header will now correctly adapt when scrolling past the hero -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="contact-details-top">
+                    <span><i class="fas fa-phone"></i> 0759 888 333</span>
+                    <span style="margin-left: 15px;"><i class="fas fa-envelope"></i> inquiries@hadiid.co.ke</span>
+                </div>
+                <div class="location-top">
+                    <span><i class="fas fa-map-marker-alt"></i> Kampala road, Nairobi</span>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar" id="navbar">
+            <div class="container">
+                <a href="#hero" class="logo">
+                    <div class="logo-icon">H</div>HADIID INDUSTRIES
+                </a>
+                <ul class="nav-links" id="nav-menu">
+                     <li><a href="index.html">Home</a></li>
+                    <li><a href="ligth-aboutsu.html">About Us</a></li>
+                    <li><a href="Ligth-services.html">Services</a></li>
+                    <li><a href="our-work.html">Our-work</a></li>
+                    
+                    <li><a href="contact-us.html">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                     <a href="orders.html" class="btn-outline btn-small">Track Order</a>
+                     <a href="#contact" class="btn btn-small">Get a Quote</a>
+                </div>
+                <button class="hamburger" id="hamburger-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- The Integrated Hero Section -->
+    <section id="hero">
+        <div id="hero-animated-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>WHERE STRENGTH<br>MEETS <span>PRECISION</span></h1>
+                <p>We engineer and fabricate elite vehicle bodies, built to conquer the toughest demands with unmatched durability and performance.</p>
+                <a href="#services-overview" class="btn">DISCOVER OUR BUILDS</a>
+                <img src="https://i.imgur.com/GzBwYI4.png" alt="Hadiid Fabricated Truck" class="hero-vehicle-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- The rest of your page remains unchanged and will use the light theme from main.css -->
+    <section class="hero-features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item animate-on-scroll fade-in" style="transition-delay: 0.1s;"><div class="icon"><i class="fa-solid fa-gem"></i></div><h4>Premium Materials</h4></div>
+                <div class="feature-item animate-on-scroll fade-in" style="transition-delay: 0.2s;"><div class="icon"><i class="fa-solid fa-gears"></i></div><h4>Expert Engineering</h4></div>
+                <div class="feature-item animate-on-scroll fade-in" style="transition-delay: 0.3s;"><div class="icon"><i class="fa-solid fa-truck-fast"></i></div><h4>On-Time Delivery</h4></div>
+                <div class="feature-item animate-on-scroll fade-in" style="transition-delay: 0.4s;"><div class="icon"><i class="fa-solid fa-shield-halved"></i></div><h4>Unmatched Durability</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <!-- About, Services, etc. (No change to these sections) -->
+        <section id="about-us" class="section section-alt">
+            <div class="container">
+                 <div class="about-us-layout">
+                    <div class="about-text animate-on-scroll slide-in-left">
+                        <h2 class="section-title" style="text-align: left; margin:0 0 20px 0;">WHO WE ARE: <span>DRIVEN BY INNOVATION</span></h2>
+                        <p>As a new leader in the industry, HADIID Industries Ltd. is founded on a fresh vision: to revolutionize the African transport market with world-class, durable, and efficient solutions. We are a dynamic team of engineers and designers dedicated to our craft. We blend modern techniques with a passion for problem-solving to deliver results that don't just meet expectations, but set new standards.</p>
+                    </div>
+                    <div class="counters-grid animate-on-scroll slide-in-right">
+                        <div class="counter-item"><div class="counter-number" data-target="1500">0</div><div class="counter-text">Square Meters of Workshop</div></div>
+                        <div class="counter-item"><div class="counter-number" data-target="50">0</div><div class="counter-text">Skilled Technicians</div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="why-choose-us" class="section">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll fade-in">THE HADIID <span>ADVANTAGE</span></h2>
+                <p class="section-intro animate-on-scroll fade-in">We are committed to providing our clients with superior products and service. Here’s why we are the right choice for your new project.</p>
+                <div class="why-grid">
+                    <div class="why-card animate-on-scroll fade-in" style="transition-delay: 0.1s;"><div class="icon"><i class="fa-solid fa-gears"></i></div><h3>Modern Technology</h3><p>We use premium components and the latest CAD technology to guarantee reliability and precision in every build.</p></div>
+                    <div class="why-card animate-on-scroll fade-in" style="transition-delay: 0.2s;"><div class="icon"><i class="fa-solid fa-leaf"></i></div><h3>Efficiency Focused</h3><p>Our intelligent designs and modern materials create lighter, stronger bodies for increased payload and fuel savings.</p></div>
+                    <div class="why-card animate-on-scroll fade-in" style="transition-delay: 0.3s;"><div class="icon"><i class="fa-solid fa-handshake-angle"></i></div><h3>Customer Partnership</h3><p>As a new business, your success is our success. We work closely with you as a dedicated partner from start to finish.</p></div>
+                </div>
+            </div>
+        </section>
+        <section id="services-overview" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll fade-in">OUR CORE <span>SERVICES</span></h2>
+                <p class="section-intro animate-on-scroll fade-in">We provide a comprehensive range of fabrication and repair services, all handled in-house by our team of expert engineers and technicians.</p>
+                <div class="services-grid">
+                    <div class="service-card animate-on-scroll fade-in" style="transition-delay: 0.1s;"><div class="icon"><i class="fa-solid fa-bus-simple"></i></div><h3>Bus Body Fabrication</h3><p>Custom-designed bodies for city commuters, shuttles, and luxury coaches.</p><a href="#bus-body" class="btn-outline">Learn More</a></div>
+                    <div class="service-card animate-on-scroll fade-in" style="transition-delay: 0.2s;"><div class="icon"><i class="fa-solid fa-truck-flatbed"></i></div><h3>Trailer Bodies</h3><p>Durable and efficient trailers including flatbeds, tankers, and tippers.</p><a href="#trailers" class="btn-outline">Learn More</a></div>
+                    <div class="service-card animate-on-scroll fade-in" style="transition-delay: 0.3s;"><div class="icon"><i class="fa-solid fa-car-burst"></i></div><h3>Accident Repairs</h3><p>From minor dents to full structural reconstruction, we get you back on the road.</p><a href="#accident-repairs" class="btn-outline">Learn More</a></div>
+                </div>
+            </div>
+        </section>
+        <section id="bus-body" class="section">
+            <div class="container"><div class="service-layout"><div class="service-content animate-on-scroll slide-in-left"><h3>Bus Body <span>Fabrication</span></h3><p>Our CAD-designed bus bodies are attractive, robust, and flexible, offering superior performance and savings on fuel and tyres for local road conditions.</p><ul><li><i class="fa-solid fa-check-double"></i> City Commuter & Shuttle Buses</li><li><i class="fa-solid fa-check-double"></i> Luxury & Long-Distance Coaches</li><li><i class="fa-solid fa-check-double"></i> Custom Body Conversions</li></ul></div><div class="service-image animate-on-scroll slide-in-right"><img src="https://www.furniturecarpenter.com/blog/wp-content/uploads/2025/03/bus-body-building.jpg" alt="Modern White Bus"></div></div></div>
+        </section>
+        <section id="trailers" class="section section-alt">
+            <div class="container"><div class="service-layout reverse"><div class="service-content animate-on-scroll slide-in-right"><h3>Trailer <span>Bodies</span></h3><p>We manufacture a wide range of trailers equipped with original BPW axels, Wabco braking systems, and Hyva tipping gears for guaranteed quality and performance.</p><p>Our gallery showcases the diversity and quality of our builds.</p></div><div class="trailer-gallery service-image animate-on-scroll slide-in-left"><img src="https://rhodestrailers.com/wp-content/uploads/2021/09/revelationmainpage.jpg" alt="Fleet of Trailers"><img src="https://cdn.bcheavyindustry.com/wp-content/uploads/2024/01/Tri-Axle-Tipper-Trailer-for-Sale3-600x400.webp" alt="Tipping Trailer"></div></div></div>
+        </section>
+        <section id="accident-repairs" class="section">
+            <div class="container"><div class="service-layout"><div class="service-content animate-on-scroll slide-in-left"><h3>Expert <span>Accident Repairs</span></h3><p>Seeing is believing. Our team meticulously restores vehicles to their pre-accident condition, focusing on safety, integrity, and aesthetics. Drag the slider to see the quality of our work.</p><ul><li><i class="fa-solid fa-check-double"></i> Panel Beating & Chassis Straightening</li><li><i class="fa-solid fa-check-double"></i> Professional Spray Painting Booth</li><li><i class="fa-solid fa-check-double"></i> Full Structural Reconstruction</li></ul></div><div class="before-after-slider animate-on-scroll slide-in-right" id="repair-slider-1"><img src="https://i.imgur.com/e5oQjWl.jpg" alt="Truck Before Repair" class="before-image"><div class="after-image-container"><img src="https://i.imgur.com/T09eU9O.jpg" alt="Truck After Repair" class="after-image"></div><div class="slider-handle"><i class="fa-solid fa-arrows-left-right"></i></div></div></div></div>
+        </section>
+
+        <section id="testimonials" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll fade-in">CLIENTS <span>TRUST US</span></h2>
+                <p class="section-intro animate-on-scroll fade-in">We are proud to have partnered with leading transport companies. Here's what they have to say about their experience with HADIID Industries.</p>
+                
+                <div class="testimonial-slider-container">
+                    <div class="testimonial-slider-wrapper">
+                        <!-- Slide 1 -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <blockquote>The new bus bodies are not only lighter, increasing our fuel efficiency, but the build quality is far superior to anything we've used before. Highly recommended.</blockquote>
+                                <div class="testimonial-author">
+                                    <div class="author-info">
+                                        <h4>John K. Mwangi</h4>
+                                        <span>CEO, Metro Trans Sacco</span>
+                                    </div>
+                                    <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <blockquote>HADIID's repair work on our wrecked prime mover was astonishing. It came back looking factory-new. Their professionalism and speed saved us significant downtime.</blockquote>
+                                <div class="testimonial-author">
+                                    <div class="author-info">
+                                        <h4>Asha Omar</h4>
+                                        <span>Fleet Manager, Coastline Hauliers</span>
+                                    </div>
+                                    <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <blockquote>The custom tipping trailer we ordered was delivered on time and exceeded all specifications. The build is robust and perfectly suited for our demanding work. Great job!</blockquote>
+                                <div class="testimonial-author">
+                                    <div class="author-info">
+                                        <h4>David Chen</h4>
+                                        <span>Logistics Director, Rift Valley Cargo</span>
+                                    </div>
+                                    <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="slider-arrow prev" aria-label="Previous Testimonial"><i class="fas fa-chevron-left"></i></button>
+                    <button class="slider-arrow next" aria-label="Next Testimonial"><i class="fas fa-chevron-right"></i></button>
+                    <div class="slider-nav"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta" class="section">
+            <div class="container"><h2 class="animate-on-scroll fade-in">Ready to Elevate Your Fleet?</h2><p class="animate-on-scroll fade-in" style="transition-delay: 0.2s;">Let's build the future of transport, together. Contact our experts today for a free, no-obligation consultation and quote for your next project.</p><a href="#contact" class="btn animate-on-scroll fade-in" style="transition-delay: 0.4s;">GET YOUR FREE QUOTE TODAY</a></div>
+        </section>
+    </main>
+    
+    <footer id="contact" class="section">
+        <div class="container"><div class="footer-main"><div class="footer-col animate-on-scroll fade-in" style="transition-delay: 0.1s;"><a href="#hero" class="logo" style="font-size: 1.6rem; margin-bottom: 20px; display: inline-block;"><div class="logo-icon">H</div>HADIID</a><p>Your trusted partner in vehicle body building, fabrication, and repairs. We combine modern technology with expert craftsmanship to deliver unmatched quality.</p></div><div class="footer-col animate-on-scroll fade-in" style="transition-delay: 0.2s;"><h3>Quick Links</h3><ul><li><a href="#hero">Home</a></li><li><a href="#about-us">About Us</a></li><li><a href="#services-overview">Services</a></li><li><a href="#why-choose-us">Why Us</a></li></ul></div><div class="footer-col animate-on-scroll fade-in" style="transition-delay: 0.3s;"><h3>Contact Info</h3><ul><li><i class="fas fa-map-marker-alt"></i> Kampala road, Nairobi, Kenya</li><li><i class="fas fa-phone"></i> 0759 888 333 / 0759 999 666</li><li><i class="fas fa-envelope"></i> inquiries@hadiid.co.ke</li></ul></div><div class="footer-col animate-on-scroll fade-in" style="transition-delay: 0.4s;"><h3>Opening Hours</h3><ul><li><i class="fas fa-clock"></i> Mon - Fri: 8:00 AM - 5:00 PM</li><li><i class="fas fa-clock"></i> Saturday: 8:00 AM - 1:00 PM</li><li><i class="fas fa-times-circle"></i> Sunday: Closed</li></ul></div></div></div>
+        <div class="footer-bottom"><p>© 2024 HADIID INDUSTRIES LTD. All Rights Reserved.</p></div>
+    </footer>
+    <a href="#hero" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+<script>
+    // Your existing JavaScript remains the same and will work perfectly.
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // --- Animate on Scroll ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    if (entry.target.classList.contains('counters-grid')) {
+                        startCounters();
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+        
+        // --- Navbar Scroll Effect ---
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
+        
+        // --- Back to Top Button ---
+        const backToTopButton = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => backToTopButton.classList.toggle('visible', window.scrollY > 400));
+        
+        // --- Animated Counters ---
+        let countersStarted = false;
+        function startCounters() {
+            if (countersStarted) return;
+            countersStarted = true;
+            document.querySelectorAll('.counter-number').forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                let count = 0;
+                const updateCount = () => {
+                    const increment = target / 100;
+                    if (count < target) {
+                        count = Math.ceil(count + increment);
+                        counter.innerText = count.toLocaleString();
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target.toLocaleString();
+                    }
+                };
+                updateCount();
+            });
+        }
+        
+        // --- Before/After Slider Logic ---
+        const repairSlider = document.getElementById('repair-slider-1');
+        if (repairSlider) {
+            const afterContainer = repairSlider.querySelector('.after-image-container');
+            const handle = repairSlider.querySelector('.slider-handle');
+            let isDragging = false;
+            const onDrag = (e) => {
+                if (!isDragging) return;
+                let x = e.clientX || (e.touches ? e.touches[0].clientX : 0);
+                const rect = repairSlider.getBoundingClientRect();
+                let newWidth = ((x - rect.left) / rect.width) * 100;
+                newWidth = Math.max(0, Math.min(100, newWidth));
+                afterContainer.style.width = `${newWidth}%`;
+                handle.style.left = `${newWidth}%`;
+            };
+            const stopDragging = () => isDragging = false;
+            
+            repairSlider.addEventListener('mousedown', () => isDragging = true);
+            window.addEventListener('mouseup', stopDragging);
+            window.addEventListener('mouseleave', stopDragging);
+            window.addEventListener('mousemove', onDrag);
+            
+            repairSlider.addEventListener('touchstart', (e) => { isDragging = true; e.preventDefault(); }, { passive: false });
+            window.addEventListener('touchend', stopDragging);
+            window.addEventListener('touchmove', onDrag, { passive: true });
+        }
+
+        // --- Hamburger Menu Logic ---
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = navMenu.querySelectorAll('a');
+        hamburgerBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = hamburgerBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    hamburgerBtn.querySelector('i').classList.remove('fa-times');
+                    hamburgerBtn.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+
+        // --- NEW: Testimonial Slider Logic ---
+        const sliderWrapper = document.querySelector('.testimonial-slider-wrapper');
+        if (sliderWrapper) {
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const dotsContainer = document.querySelector('.slider-nav');
+            const prevBtn = document.querySelector('.slider-arrow.prev');
+            const nextBtn = document.querySelector('.slider-arrow.next');
+            let currentIndex = 0;
+            let slideInterval;
+
+            // Create dots
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    goToSlide(i);
+                    resetAutoplay();
+                });
+                dotsContainer.appendChild(dot);
+            });
+            const dots = document.querySelectorAll('.slider-nav .dot');
+
+            const goToSlide = (index) => {
+                currentIndex = index;
+                sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[currentIndex].classList.add('active');
+            };
+
+            const nextSlide = () => {
+                const newIndex = (currentIndex + 1) % slides.length;
+                goToSlide(newIndex);
+            };
+
+            const prevSlide = () => {
+                const newIndex = (currentIndex - 1 + slides.length) % slides.length;
+                goToSlide(newIndex);
+            };
+            
+            const startAutoplay = () => {
+                slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+            };
+
+            const resetAutoplay = () => {
+                clearInterval(slideInterval);
+                startAutoplay();
+            };
+
+            // Event Listeners
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetAutoplay();
+            });
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetAutoplay();
+            });
+
+            // Start the show
+            startAutoplay();
+        }
+    });
+</script>
+
+</body>
+</html>

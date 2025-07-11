@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story & Process | HADIID INDUSTRIES LTD.</title>
+    
+    <!-- Google Fonts: Poppins & Open Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --brand-yellow: #ffc400;
+            --brand-dark: #1a1a1a;
+            --brand-light-dark: #252525;
+            --brand-topbar: #101010;
+            --text-light: #f5f5f5;
+            --text-grey: #b0b0b0;
+        }
+
+        /* --- Base & Reusable Components --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Open Sans', sans-serif; background-color: var(--brand-dark); color: var(--text-light); line-height: 1.8; overflow-x: hidden; }
+        .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; font-weight: 800; color: #fff; }
+        .section { padding: 100px 0; position: relative; overflow: hidden; }
+        .section-title { font-size: 2.8rem; text-align: center; margin-bottom: 15px; text-transform: uppercase; }
+        .section-title span { color: var(--brand-yellow); }
+        .section-intro { text-align: center; max-width: 750px; margin: 0 auto 60px auto; font-size: 1.1rem; color: var(--text-grey); }
+        .btn { display: inline-block; background: var(--brand-yellow); color: var(--brand-dark); padding: 14px 32px; border-radius: 50px; text-decoration: none; font-weight: 700; font-family: 'Poppins'; transition: all 0.3s ease; }
+        .btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 12px 25px rgba(255,196,0,0.2); }
+        .section-dark-pattern { background-color: var(--brand-dark); background-image: linear-gradient(135deg, rgba(255,255,255,0.02) 25%, transparent 25%), linear-gradient(225deg, rgba(255,255,255,0.02) 25%, transparent 25%), linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%), linear-gradient(315deg, rgba(255,255,255,0.02) 25%, var(--brand-dark) 25%); background-size: 20px 20px; }
+        .section-light-dark { background-color: var(--brand-light-dark); }
+        .animate-on-scroll { opacity: 0; transition: opacity 0.8s ease-out, transform 0.8s ease-out; transform: translateY(50px); }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+        
+        /* --- Header & Nav (Same as homepage) --- */
+        .navbar { background-color: rgba(26, 26, 26, 0.85); backdrop-filter: blur(12px); padding: 1.2rem 0; position: sticky; width: 100%; top: 0; z-index: 1000; }
+        .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+        .navbar .logo { display: flex; align-items: center; text-decoration: none; color: var(--text-light); font-family: 'Poppins'; font-weight: 700; font-size: 1.4rem; }
+        .logo-icon { background: #444; color: var(--brand-yellow); width: 45px; height: 45px; border-radius: 50%; display: grid; place-items: center; margin-right: 15px; font-weight: 900; font-size: 1.8rem; }
+        .nav-links { list-style: none; display: flex; align-items: center; gap: 35px; }
+        .nav-links a { color: var(--text-light); text-decoration: none; font-weight: 600; position: relative; padding-bottom: 5px; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--brand-yellow); transition: width 0.3s ease; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .hamburger { display: none; }
+
+        /* --- Page Hero --- */
+        .page-hero { padding: 140px 0; text-align: center; background: linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.85)), url('https://images.unsplash.com/photo-1517423568346-61ce4e21a69a?q=80&w=1935&auto=format&fit=crop') no-repeat center center/cover; }
+        .page-hero h1 { font-size: 3.5rem; color: var(--brand-yellow); text-transform: uppercase; }
+        .page-hero p { font-size: 1.3rem; color: var(--text-light); font-weight: 600; max-width: 800px; margin: 10px auto 0; }
+        
+        /* --- Story Section --- */
+        .story-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .story-image img { width: 100%; border-radius: 10px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+        .story-content h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .story-content h2 span { color: var(--brand-yellow); }
+        .story-content p { margin-bottom: 15px; color: var(--text-grey); font-size: 1.1rem; }
+
+        /* --- ADDED: Timeline Process Section --- */
+        .timeline-container { position: relative; max-width: 900px; margin: 0 auto; }
+        .timeline-container::after { content: ''; position: absolute; width: 4px; background: var(--brand-light-dark); top: 0; bottom: 0; left: 50%; margin-left: -2px; z-index: 1; }
+        .timeline-item { padding: 10px 40px; position: relative; background: inherit; width: 50%; }
+        .timeline-item:nth-child(odd) { left: 0; }
+        .timeline-item:nth-child(even) { left: 50%; }
+        /* The circle on the timeline */
+        .timeline-item::after { content: ''; position: absolute; width: 25px; height: 25px; right: -14px; background-color: var(--brand-dark); border: 4px solid var(--brand-yellow); top: 35px; border-radius: 50%; z-index: 2; }
+        .timeline-item:nth-child(even)::after { left: -12px; }
+        /* The content box */
+        .timeline-content { padding: 30px; background: var(--brand-light-dark); position: relative; border-radius: 8px; border-left: 5px solid var(--brand-yellow); }
+        .timeline-content h3 { font-size: 1.6rem; margin-bottom: 10px; color: var(--brand-yellow); }
+        .timeline-content .step { font-family: 'Poppins'; font-weight: 700; color: #555; font-size: 1rem; margin-bottom: 10px; }
+        .timeline-content p { color: var(--text-grey); }
+
+        /* --- Leadership Section --- */
+        .leadership-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .leadership-image img { width: 100%; border-radius: 50%; border: 8px solid var(--brand-light-dark); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .leadership-content h3 { font-size: 2.2rem; }
+        .leadership-content h3 span { color: var(--brand-yellow); }
+        .leadership-content .title { color: var(--text-grey); font-style: italic; margin-top: -15px; margin-bottom: 20px; }
+
+        /* --- CTA Section --- */
+        #cta { padding: 100px 0; text-align: center; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1543286386-713bdd548da4?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover; }
+        #cta h2 { font-size: 3rem; margin-bottom: 20px; text-transform: uppercase; }
+        #cta p { max-width: 600px; margin: 0 auto 30px auto; color: var(--text-grey); font-size: 1.1rem; }
+
+        /* --- Footer & Other Base Styles (Same as before) --- */
+        #contact { background-color: var(--brand-topbar); padding: 100px 0 0; }
+        .footer-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; padding-bottom: 60px; }
+        .footer-col h3 { font-size: 1.2rem; margin-bottom: 20px; color: var(--brand-yellow); text-transform: uppercase; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 10px; }
+        .footer-col a, .footer-col p { color: var(--text-grey); text-decoration: none; transition: color 0.3s; }
+        .footer-col a:hover { color: var(--brand-yellow); }
+        .footer-col i { margin-right: 10px; width: 20px; }
+        .footer-bottom { background: #000; padding: 20px 0; text-align: center; color: var(--text-grey); font-size: 0.9rem; }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .story-layout, .leadership-layout { grid-template-columns: 1fr; }
+            .leadership-layout .leadership-image { grid-row: 1; max-width: 300px; margin: 0 auto 40px; }
+            .section-title { font-size: 2.2rem; }
+            .page-hero h1 { font-size: 2.8rem; }
+            /* Timeline on mobile */
+            .timeline-container::after { left: 15px; }
+            .timeline-item { width: 100%; padding-left: 60px; padding-right: 15px; }
+            .timeline-item:nth-child(even) { left: 0%; }
+            .timeline-item::after { left: 4px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar" id="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">H</div>HADIID INDUSTRIES
+                </a>
+                <ul class="nav-links" id="nav-menu">
+                    <li><a href="about.html" class="active">About Us</a></li>
+                    <li><a href="index.html#services-overview">Services</a></li>
+                    <li><a href="index.html#testimonials">Testimonials</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Engineering Africa's Arteries</h1>
+            <p>More than metal. We build partnerships, performance, and the future of transport.</p>
+        </div>
+    </section>
+
+    <main>
+        <!-- Our Story / Mission Section -->
+        <section id="our-story" class="section section-light-dark">
+            <div class="container">
+                <div class="story-layout">
+                    <div class="story-content animate-on-scroll">
+                        <h2>Our Story: <span>Driven by a Vision</span></h2>
+                        <p>HADIID Industries was born from the dust and dynamism of Africa's burgeoning transport landscape. We saw hard-working businesses constrained by vehicles that couldn't keep pace—inefficient, unreliable, and ill-suited for the unique rigors of our roads. We knew there was a better way.</p>
+                        <p><strong>Our mission is to be the premier engineering partner for the African transport sector.</strong> We achieve this by forging world-class vehicle bodies that are not just built to last, but meticulously engineered to perform. We blend cutting-edge technology with time-honored craftsmanship to deliver solutions that increase payload, enhance fuel efficiency, and ensure unparalleled driver safety. At HADIID, your success is the blueprint for ours.</p>
+                    </div>
+                    <div class="story-image animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" alt="Team collaborating on an engineering project">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Process Timeline Section -->
+        <section id="our-process" class="section section-dark-pattern">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">OUR <span>PARTNERSHIP PROCESS</span></h2>
+                <p class="section-intro animate-on-scroll">From the first handshake to the final handover, we follow a transparent and meticulous process to ensure your vision is realized with absolute precision.</p>
+                
+                <div class="timeline-container">
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-content">
+                            <div class="step">STEP 01</div>
+                            <h3>Discovery & Blueprint</h3>
+                            <p>We don't just take an order; we listen. Our process begins with a deep dive into your operational needs, challenges, and goals. This collaboration forms the blueprint for a custom CAD design.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-content">
+                            <div class="step">STEP 02</div>
+                            <h3>Precision Fabrication</h3>
+                            <p>Using high-tensile steel and state-of-the-art machinery, our certified technicians begin fabrication. Every cut is precise, and every component is prepared for a perfect fit.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-content">
+                            <div class="step">STEP 03</div>
+                            <h3>Meticulous Assembly</h3>
+                            <p>The chassis and structural framework are assembled with an obsessive focus on weld integrity, alignment, and strength, forming the rock-solid foundation of your vehicle.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-content">
+                            <div class="step">STEP 04</div>
+                            <h3>Flawless Finishing</h3>
+                            <p>From paneling and electricals to our professional-grade spray painting booth, we ensure every detail is finished to perfection for durability and a commanding road presence.</p>
+                        </div>
+                    </div>
+                     <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-content">
+                            <div class="step">STEP 05</div>
+                            <h3>Rigorous Quality Assurance</h3>
+                            <p>Before leaving our workshop, every vehicle undergoes a comprehensive multi-point inspection, testing everything from structural integrity to safety systems.</p>
+                        </div>
+                    </div>
+                     <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-content">
+                            <div class="step">STEP 06</div>
+                            <h3>Handover & Partnership</h3>
+                            <p>This isn't the end; it's the beginning. We provide a full handover and offer ongoing after-sales support, solidifying our commitment to your long-term success.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Meet the Leadership Section -->
+        <section id="leadership" class="section section-light-dark">
+            <div class="container">
+                <div class="leadership-layout">
+                    <div class="leadership-image animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=2071&auto=format&fit=crop" alt="Portrait of the company founder, Hassan Al-Hadiid">
+                    </div>
+                    <div class="leadership-content animate-on-scroll">
+                        <h3>Meet The <span>Visionary</span></h3>
+                        <p class="title">Hassan Al-Hadiid, Founder & Chief Engineer</p>
+                        <p>With decades of hands-on experience in transport engineering across the continent, Hassan Al-Hadiid founded this company with a singular vision: to build vehicles that don't just work, but excel in the African environment.</p>
+                        <p>His uncompromising standards for quality and his passion for innovative problem-solving are embedded in the DNA of every project. He leads a hand-picked team of the finest engineers and technicians, ensuring the HADIID promise of performance and durability is delivered, without exception.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section id="cta" class="section">
+            <div class="container">
+                <h2 class="animate-on-scroll">Let's Build Something <span>Remarkable</span></h2>
+                <p class="animate-on-scroll">Your fleet is your business's lifeblood. Partner with a team that respects that. Contact us today for a no-obligation consultation and discover the HADIID difference.</p>
+                <a href="index.html#contact" class="btn animate-on-scroll">Get Your Free Quote</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="contact" class="section">
+        <div class="container">
+             <div class="footer-main">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="font-size: 1.6rem; margin-bottom: 20px; display: inline-block;">
+                        <div class="logo-icon">H</div>HADIID
+                    </a>
+                    <p>Your trusted partner in vehicle body building, fabrication, and repairs. We combine modern technology with expert craftsmanship to deliver unmatched quality.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="index.html#services-overview">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Kampala road, Nairobi, Kenya</li>
+                        <li><i class="fas fa-phone"></i> 0759 888 333 / 0759 999 666</li>
+                        <li><i class="fas fa-envelope"></i> inquiries@hadiid.co.ke</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Opening Hours</h3>
+                    <ul>
+                        <li><i class="fas fa-clock"></i> Mon - Fri: 8:00 AM - 5:00 PM</li>
+                        <li><i class="fas fa-clock"></i> Sat: 8:00 AM - 1:00 PM</li>
+                        <li><i class="fas fa-times-circle"></i> Sunday: Closed</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 HADIID INDUSTRIES LTD. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- Animate on Scroll ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+            observer.observe(el);
+        });
+    });
+</script>
+
+</body>
+</html>

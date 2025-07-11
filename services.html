@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | HADIID INDUSTRIES LTD.</title>
+    
+    <!-- Google Fonts: Poppins & Open Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --brand-yellow: #ffc400;
+            --brand-dark: #1a1a1a;
+            --brand-light-dark: #252525;
+            --brand-topbar: #101010;
+            --text-light: #f5f5f5;
+            --text-grey: #b0b0b0;
+        }
+
+        /* --- Base & Reusable Components --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Open Sans', sans-serif; background-color: var(--brand-dark); color: var(--text-light); line-height: 1.8; overflow-x: hidden; }
+        .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; font-weight: 800; color: #fff; }
+        .section { padding: 100px 0; position: relative; overflow: hidden; }
+        .section-title { font-size: 2.8rem; text-align: center; margin-bottom: 15px; text-transform: uppercase; }
+        .section-title span { color: var(--brand-yellow); }
+        .section-intro { text-align: center; max-width: 750px; margin: 0 auto 60px auto; font-size: 1.1rem; color: var(--text-grey); }
+        .btn { display: inline-block; background: var(--brand-yellow); color: var(--brand-dark); padding: 14px 32px; border-radius: 50px; text-decoration: none; font-weight: 700; font-family: 'Poppins'; transition: all 0.3s ease; }
+        .btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 12px 25px rgba(255,196,0,0.2); }
+        .section-dark-pattern { background-color: var(--brand-dark); background-image: linear-gradient(135deg, rgba(255,255,255,0.02) 25%, transparent 25%), linear-gradient(225deg, rgba(255,255,255,0.02) 25%, transparent 25%), linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%), linear-gradient(315deg, rgba(255,255,255,0.02) 25%, var(--brand-dark) 25%); background-size: 20px 20px; }
+        .section-light-dark { background-color: var(--brand-light-dark); }
+        .animate-on-scroll { opacity: 0; transition: opacity 0.8s ease-out, transform 0.8s ease-out; transform: translateY(50px); }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+        
+        /* --- Header & Nav (Consistent) --- */
+        .navbar { background-color: rgba(26, 26, 26, 0.85); backdrop-filter: blur(12px); padding: 1.2rem 0; position: sticky; width: 100%; top: 0; z-index: 1000; }
+        .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+        .navbar .logo { display: flex; align-items: center; text-decoration: none; color: var(--text-light); font-family: 'Poppins'; font-weight: 700; font-size: 1.4rem; }
+        .logo-icon { background: #444; color: var(--brand-yellow); width: 45px; height: 45px; border-radius: 50%; display: grid; place-items: center; margin-right: 15px; font-weight: 900; font-size: 1.8rem; }
+        .nav-links { list-style: none; display: flex; align-items: center; gap: 35px; }
+        .nav-links a { color: var(--text-light); text-decoration: none; font-weight: 600; position: relative; padding-bottom: 5px; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--brand-yellow); transition: width 0.3s ease; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+        /* --- Page Hero --- */
+        .page-hero { padding: 140px 0; text-align: center; background: linear-gradient(rgba(26, 26, 26, 0.7), rgba(26, 26, 26, 0.7)), url('https://images.unsplash.com/photo-1617802319350-2c7b5088f780?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover; }
+        .page-hero h1 { font-size: 3.5rem; color: #fff; text-transform: uppercase; }
+        .page-hero span { color: var(--brand-yellow); }
+
+        /* --- Service Navigation Grid --- */
+        .service-nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .service-nav-card { background: var(--brand-light-dark); padding: 40px; text-align: center; border-radius: 10px; text-decoration: none; color: var(--text-light); border-bottom: 4px solid #444; transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
+        .service-nav-card:hover { transform: translateY(-10px); border-color: var(--brand-yellow); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .service-nav-card .icon { font-size: 3.5rem; color: var(--brand-yellow); margin-bottom: 20px; }
+        .service-nav-card h3 { font-size: 1.6rem; margin-bottom: 10px; }
+        .service-nav-card p { color: var(--text-grey); }
+
+        /* --- Detailed Service Section Layout --- */
+        .service-detail-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
+        .service-detail-layout.reverse { grid-template-columns: 1.2fr 1fr; }
+        .service-detail-layout.reverse .service-image { grid-column: 2; grid-row: 1; }
+        .service-detail-layout.reverse .service-content { grid-column: 1; grid-row: 1; }
+        
+        .service-image img { width: 100%; border-radius: 10px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); display: block; }
+        .service-content h2 { font-size: 3rem; margin-bottom: 20px; line-height: 1.2; }
+        .service-content h2 span { color: var(--brand-yellow); }
+        .service-content .intro-p { font-size: 1.1rem; color: var(--text-grey); margin-bottom: 30px; }
+        .feature-list { list-style: none; margin-top: 20px; }
+        .feature-list li { display: flex; align-items: flex-start; margin-bottom: 15px; font-size: 1.05rem; }
+        .feature-list i { color: var(--brand-yellow); margin-right: 15px; font-size: 1.2rem; margin-top: 5px; }
+
+        /* --- Before/After Slider (for repairs) --- */
+        .before-after-slider { position: relative; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); user-select: none; }
+        .before-after-slider img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
+        .after-image-container { position: absolute; top: 0; left: 0; height: 100%; width: 50%; overflow: hidden; z-index: 2; resize: horizontal; border-right: 4px solid #fff; }
+        .slider-handle { position: absolute; top: 50%; left: 50%; width: 40px; height: 40px; background: #fff; border-radius: 50%; cursor: ew-resize; z-index: 3; transform: translate(-50%, -50%); display: grid; place-items: center; color: var(--brand-dark); font-size: 1.2rem; }
+
+        /* --- HADIID Standard Section (repurposed why-us) --- */
+        .standard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .standard-card { background: var(--brand-light-dark); padding: 30px; text-align: left; border-radius: 10px; }
+        .standard-card .icon { font-size: 2.5rem; color: var(--brand-yellow); margin-bottom: 15px; }
+        .standard-card h3 { font-size: 1.4rem; margin-bottom: 10px; }
+        .standard-card p { color: var(--text-grey); }
+
+        /* --- CTA Section --- */
+        #cta { padding: 100px 0; text-align: center; background: var(--brand-topbar); }
+        #cta h2 { font-size: 3rem; margin-bottom: 20px; text-transform: uppercase; }
+        #cta p { max-width: 600px; margin: 0 auto 30px auto; color: var(--text-grey); font-size: 1.1rem; }
+
+        /* --- Footer (Consistent) --- */
+        #contact { background-color: #000; padding: 100px 0 0; }
+        /* ... other footer styles are assumed to be present ... */
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .service-detail-layout, .service-detail-layout.reverse { grid-template-columns: 1fr; }
+            .service-detail-layout.reverse .service-image, .service-detail-layout.reverse .service-content { grid-column: auto; grid-row: auto; }
+            .service-image { margin-bottom: 40px; }
+            .service-content h2 { font-size: 2.5rem; }
+            .section-title, .page-hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar" id="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">H</div>HADIID INDUSTRIES
+                </a>
+                <ul class="nav-links" id="nav-menu">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="index.html#testimonials">Testimonials</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Our Engineering <span>Services</span></h1>
+        </div>
+    </section>
+
+    <main>
+        <!-- Service Navigation Section -->
+        <section id="service-navigation" class="section section-dark-pattern">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">A Spectrum of <span>Excellence</span></h2>
+                <p class="section-intro animate-on-scroll">We offer a comprehensive suite of in-house services designed to meet the rigorous demands of the modern transport industry. Explore our core specializations below.</p>
+                <div class="service-nav-grid">
+                    <a href="#bus-fabrication" class="service-nav-card animate-on-scroll" style="transition-delay: 0.1s;">
+                        <div class="icon"><i class="fas fa-bus-simple"></i></div>
+                        <h3>Bus & Coach Fabrication</h3>
+                        <p>Custom bodies for commuters, shuttles, and luxury travel.</p>
+                    </a>
+                    <a href="#trailer-fabrication" class="service-nav-card animate-on-scroll" style="transition-delay: 0.2s;">
+                        <div class="icon"><i class="fas fa-truck-flatbed"></i></div>
+                        <h3>Trailer Fabrication</h3>
+                        <p>Durable and efficient flatbeds, tankers, tippers, and more.</p>
+                    </a>
+                    <a href="#accident-repairs" class="service-nav-card animate-on-scroll" style="transition-delay: 0.3s;">
+                        <div class="icon"><i class="fas fa-car-burst"></i></div>
+                        <h3>Accident Repairs</h3>
+                        <p>Full structural reconstruction and restoration services.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Service: Bus Body Fabrication -->
+        <section id="bus-fabrication" class="section section-light-dark">
+            <div class="container">
+                <div class="service-detail-layout">
+                    <div class="service-content animate-on-scroll">
+                        <h2>Custom Bus & Coach Body <span>Fabrication</span></h2>
+                        <p class="intro-p">We engineer and construct robust, safe, and comfortable bus bodies tailored to your specific operational needs. Our designs prioritize passenger comfort, driver ergonomics, and long-term durability, ensuring a superior return on investment.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-double"></i><div><strong>City Commuter & PSV Buses:</strong> Optimized for high-capacity, frequent stops, and maximum durability.</div></li>
+                            <li><i class="fas fa-check-double"></i><div><strong>Luxury & Long-Distance Coaches:</strong> Featuring enhanced comfort, luggage capacity, and premium amenities.</div></li>
+                            <li><i class="fas fa-check-double"></i><div><strong>Shuttle & Staff Buses:</strong> Custom configurations for corporate, school, or airport transport.</div></li>
+                            <li><i class="fas fa-check-double"></i><div><strong>Lightweight Frame Technology:</strong> Intelligent design for improved fuel efficiency and increased payload.</div></li>
+                        </ul>
+                    </div>
+                    <div class="service-image animate-on-scroll">
+                         <img src="https://i.imgur.com/rN9F84z.jpg" alt="Modern White Bus fabricated by Hadiid Industries">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Detailed Service: Trailer Fabrication -->
+        <section id="trailer-fabrication" class="section section-dark-pattern">
+            <div class="container">
+                <div class="service-detail-layout reverse">
+                    <div class="service-content animate-on-scroll">
+                        <h2>Heavy-Duty <span>Trailer Fabrication</span></h2>
+                        <p class="intro-p">Our trailers are the backbone of logistics, built to haul more, last longer, and operate safer. We use high-tensile steel and integrate world-class components like BPW axles and WABCO braking systems for performance you can count on.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-double"></i><div><strong>Flatbed & Skeletal Trailers:</strong> For versatile cargo, container transport, and heavy haulage.</div></li>
+                            <li><i class="fas fa-check-double"></i><div><strong>Tipper & Dump Trailers:</strong> Equipped with reliable Hyva tipping gear for construction and mining.</div></li>
+                            <li><i class="fas fa-check-double"></i><div><strong>Fuel & Water Tankers:</strong> Built to the highest safety standards for transporting liquids.</div></li>
+                            <li><i class="fas fa-check-double"></i><div><strong>Custom-Built Solutions:</strong> We can design and fabricate trailers for any specialized application.</div></li>
+                        </ul>
+                    </div>
+                    <div class="service-image animate-on-scroll">
+                         <img src="https://i.imgur.com/kO833tA.jpg" alt="Fleet of new trailers fabricated by Hadiid Industries">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Service: Accident Repairs -->
+        <section id="accident-repairs" class="section section-light-dark">
+            <div class="container">
+                 <div class="service-detail-layout">
+                    <div class="service-content animate-on-scroll">
+                        <h2>Expert Accident <span>Repair & Reconstruction</span></h2>
+                        <p class="intro-p">Accidents happen, but they don't have to mean the end of your vehicle. Our specialized repair division brings heavily damaged vehicles back to life, restoring them to pre-accident condition with a focus on structural integrity and safety.</p>
+                         <ul class="feature-list">
+                            <li><i class="fas fa-check-double"></i><div><strong>Advanced Chassis Straightening:</strong> Using precision jigs to restore frame alignment to factory specifications.</div></li>
+                            <li><i class="fas fa-check-double"></i><div><strong>Full Structural Reconstruction:</strong> Expert rebuilding of cabins, bodies, and critical support structures.</div></li>
+                            <li><i class="fas fa-check-double"></i><div><strong>Professional Spray Painting:</strong> A dedicated booth for a flawless, durable, factory-quality finish.</div></li>
+                             <li><i class="fas fa-check-double"></i><div><strong>Insurance Liaison Support:</strong> We work with major insurance providers to streamline the claims process.</div></li>
+                        </ul>
+                    </div>
+                    <div class="before-after-slider animate-on-scroll" id="repair-slider-1">
+                        <img src="https://i.imgur.com/e5oQjWl.jpg" alt="Truck Before Repair" class="before-image">
+                        <div class="after-image-container">
+                            <img src="https://i.imgur.com/T09eU9O.jpg" alt="Truck After Repair" class="after-image">
+                        </div>
+                        <div class="slider-handle"><i class="fa-solid fa-arrows-left-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The HADIID Standard -->
+        <section id="hadiid-standard" class="section section-dark-pattern">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">The HADIID <span>Standard</span></h2>
+                <p class="section-intro animate-on-scroll">Every service we offer is underpinned by a non-negotiable set of principles. This is our promise to you.</p>
+                <div class="standard-grid">
+                    <div class="standard-card animate-on-scroll" style="transition-delay: 0.1s;">
+                        <div class="icon"><i class="fas fa-gem"></i></div>
+                        <h3>Uncompromising Quality</h3>
+                        <p>We source only the best materials and components, ensuring every build is a testament to durability and long-term value.</p>
+                    </div>
+                    <div class="standard-card animate-on-scroll" style="transition-delay: 0.2s;">
+                        <div class="icon"><i class="fas fa-gears"></i></div>
+                        <h3>Precision Engineering</h3>
+                        <p>Our use of advanced CAD/CAM technology guarantees that every design is optimized for performance, safety, and efficiency.</p>
+                    </div>
+                    <div class="standard-card animate-on-scroll" style="transition-delay: 0.3s;">
+                        <div class="icon"><i class="fas fa-handshake-angle"></i></div>
+                        <h3>True Partnership</h3>
+                        <p>We work with you, not just for you. Your operational success is our ultimate goal, and we support you every step of the way.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section id="cta" class="section">
+            <div class="container">
+                <h2 class="animate-on-scroll">Ready to elevate your <span>fleet?</span></h2>
+                <p class="animate-on-scroll">Let's discuss how our engineering expertise can drive your business forward. Contact our team today for a detailed consultation and a competitive quote.</p>
+                <a href="index.html#contact" class="btn animate-on-scroll" style="transition-delay: 0.2s;">Request a Quote</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer would go here -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+        
+        // Before/After Slider Logic
+        const slider = document.getElementById('repair-slider-1');
+        if (slider) {
+            const afterContainer = slider.querySelector('.after-image-container');
+            const handle = slider.querySelector('.slider-handle');
+            let isDragging = false;
+            const onDrag = (e) => {
+                if (!isDragging) return;
+                let x = e.clientX || (e.touches ? e.touches[0].clientX : 0);
+                const rect = slider.getBoundingClientRect();
+                let newWidth = ((x - rect.left) / rect.width) * 100;
+                newWidth = Math.max(0, Math.min(100, newWidth));
+                afterContainer.style.width = `${newWidth}%`;
+                handle.style.left = `${newWidth}%`;
+            };
+            const stopDragging = () => isDragging = false;
+            slider.addEventListener('mousedown', () => isDragging = true);
+            window.addEventListener('mouseup', stopDragging);
+            window.addEventListener('mousemove', onDrag);
+            slider.addEventListener('touchstart', (e) => { isDragging = true; e.preventDefault(); }, { passive: false });
+            window.addEventListener('touchend', stopDragging);
+            window.addEventListener('touchmove', onDrag, { passive: true });
+        }
+    });
+</script>
+
+</body>
+</html>

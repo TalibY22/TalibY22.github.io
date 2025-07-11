@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | HADIID INDUSTRIES LTD.</title>
+    
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="main.css">
+    
+    <style>
+        /* --- ALL STYLES ARE THE SAME AS OTHER PAGES FOR CONSISTENCY --- */
+        
+       
+        
+        
+        /* --- Page Header --- */
+        .page-header { padding: 120px 0; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://media.gettyimages.com/id/512043998/photo/mid-adult-mechanic-repairing-a-truck-in-auto-repair-shop.jpg?s=612x612&w=0&k=20&c=4114O6KVATamKMI-jHqs6SQzAVmxIKfYzGsFfceiQm8=') no-repeat center center/cover; color: #fff; }
+        .page-header h1 { font-size: 3.5rem; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .page-header p { font-size: 1.2rem; max-width: 600px; margin: 15px auto 0; color: rgba(255,255,255,0.9); }
+
+        /* --- Service Detail Layout --- */
+        .service-detail-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .service-detail-layout.reverse .service-image { grid-area: 1 / 2 / 2 / 3; }
+        .service-detail-layout.reverse .service-content { grid-area: 1 / 1 / 2 / 2; }
+        .service-image img { width: 100%; border-radius: 10px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); display: block; }
+        .service-content h2 { font-size: 2.5rem; margin-bottom: 20px; position: relative; padding-bottom: 15px; }
+        .service-content h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; height: 4px; background: var(--brand-yellow); }
+        .service-content ul { list-style: none; padding-left: 0; margin-top: 20px; }
+        .service-content ul li { margin-bottom: 10px; font-size: 1.1rem; display: flex; align-items: flex-start; }
+        .service-content ul i { color: var(--brand-yellow); margin-right: 15px; margin-top: 5px; }
+        .service-content .btn { margin-top: 20px; } /* Added margin for the button */
+
+        /* --- Why Choose Us Section --- */
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .why-card { background: var(--color-bg-alt); padding: 40px 30px; text-align: center; border-radius: 10px; border-bottom: 4px solid var(--color-border); transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.04); }
+        .why-card:hover { transform: translateY(-10px); border-color: var(--brand-yellow); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+        .why-card .icon { font-size: 3.5rem; color: var(--brand-yellow); margin-bottom: 20px; transition: transform 0.3s ease; }
+        .why-card:hover .icon { transform: scale(1.1) rotate(5deg); }
+        .why-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+
+        /* --- CTA Section --- */
+        #cta-services { background: var(--brand-dark); text-align: center; padding: 80px 0; }
+        #cta-services h2 { color: #fff; font-size: 2.5rem; margin-bottom: 15px; }
+        #cta-services p { color: #ccc; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .service-detail-layout, .service-detail-layout.reverse { grid-template-columns: 1fr; }
+            .service-detail-layout .service-image, .service-detail-layout.reverse .service-image { margin-bottom: 40px; }
+            .service-detail-layout.reverse .service-image { grid-area: auto; }
+            .service-content h2, .section-title { text-align: center; }
+            .service-content h2::after { left: 50%; transform: translateX(-50%); }
+        }
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+      <header>
+        <!-- Top Bar & Navbar (No change) -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="contact-details-top">
+                    <span><i class="fas fa-phone"></i> 0759 888 333</span>
+                    <span style="margin-left: 15px;"><i class="fas fa-envelope"></i> inquiries@hadiid.co.ke</span>
+                </div>
+                <div class="location-top">
+                    <span><i class="fas fa-map-marker-alt"></i> Kampala road, Nairobi</span>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar" id="navbar">
+            <div class="container">
+                <a href="#hero" class="logo">
+                    <div class="logo-icon">H</div>HADIID INDUSTRIES
+                </a>
+                <ul class="nav-links" id="nav-menu">
+                    
+                    <li><a href="ligth-aboutsu.html">About Us</a></li>
+                    <li><a href="Ligth-services.html">Services</a></li>
+                    <li><a href="our-work.html">Our-work</a></li>
+                     <li><a href="contact-us.html">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                     <a href="orders.html" class="btn-outline btn-small">Track Order</a>
+                     <a href="#contact" class="btn btn-small">Get a Quote</a>
+                </div>
+                <button class="hamburger" id="hamburger-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="animate-on-scroll fade-in-up">Our Services</h1>
+                <p class="animate-on-scroll fade-in-up" style="transition-delay: 0.2s;">Delivering comprehensive, end-to-end solutions in vehicle fabrication and repair, engineered for durability and peak performance.</p>
+            </div>
+        </section>
+
+        <!-- Service Detail 1: Bus Body Fabrication -->
+        <section id="bus-fabrication" class="section section-alt">
+            <div class="container">
+                <div class="service-detail-layout">
+                    <div class="service-image animate-on-scroll slide-in-left">
+                        <img src="https://www.furniturecarpenter.com/blog/wp-content/uploads/2025/03/bus-body-building.jpg" alt="Modern Bus Body Fabrication">
+                    </div>
+                    <div class="service-content animate-on-scroll slide-in-right">
+                        <h2>Bus Body Fabrication</h2>
+                        <p>We specialize in designing and constructing high-quality bus bodies that are safe, comfortable, and built to withstand the rigors of daily use. Our intelligent designs focus on structural integrity and aerodynamic efficiency, providing long-term value and operational savings.</p>
+                        <ul>
+                            <li><i class="fas fa-check-double"></i><div><strong>Custom Designs:</strong> Tailored solutions for city commuters, luxury coaches, school buses, and staff shuttles.</div></li>
+                            <li><i class="fas fa-check-double"></i><div><strong>Lightweight & Strong:</strong> Advanced materials for increased fuel efficiency and payload without compromising on safety.</div></li>
+                            <li><i class="fas fa-check-double"></i><div><strong>Modern Amenities:</strong> Integration of comfortable seating, climate control, entertainment systems, and accessibility features.</div></li>
+                        </ul>
+                        <a href="#contact-footer" class="btn">Get a Quote</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Detail 2: Trailer Bodies -->
+        <section id="trailer-bodies" class="section">
+            <div class="container">
+                <div class="service-detail-layout reverse">
+                    <div class="service-image animate-on-scroll slide-in-right">
+                         <img src="https://rhodestrailers.com/wp-content/uploads/2021/09/revelationmainpage.jpg" alt="Fleet of new trailers">
+                    </div>
+                    <div class="service-content animate-on-scroll slide-in-left">
+                        <h2>Trailer & Truck Bodies</h2>
+                        <p>HADIID Industries manufactures a diverse range of robust trailer and truck bodies designed for maximum durability and payload efficiency. We use only original, high-grade components to ensure our trailers perform reliably under the most demanding conditions.</p>
+                        <ul>
+                            <li><i class="fas fa-check-double"></i><div><strong>Multiple Configurations:</strong> Flatbeds, tippers, tankers, low-beds, skeletal trailers, and custom-built cargo bodies.</div></li>
+                            <li><i class="fas fa-check-double"></i><div><strong>Premium Components:</strong> Equipped with industry-leading parts like BPW axels, Wabco braking systems, and Hyva tipping gears.</div></li>
+                            <li><i class="fas fa-check-double"></i><div><strong>Built for Africa:</strong> Engineered with reinforced chassis and suspension systems to handle challenging local terrains.</div></li>
+                        </ul>
+                        <a href="#contact-footer" class="btn">Get a Quote</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Detail 3: Accident Repairs -->
+        <section id="accident-repairs" class="section section-alt">
+            <div class="container">
+                <div class="service-detail-layout">
+                    <div class="service-image animate-on-scroll slide-in-left">
+                        <img src="https://i.imgur.com/T09eU9O.jpg" alt="A fully repaired truck looking new">
+                    </div>
+                    <div class="service-content animate-on-scroll slide-in-right">
+                        <h2>Expert Accident Repairs</h2>
+                        <p>Our dedicated repair division brings damaged vehicles back to life. We handle everything from minor cosmetic work to major structural reconstruction with meticulous attention to detail, ensuring your vehicle returns to the road in pre-accident condition, both aesthetically and structurally.</p>
+                        <ul>
+                            <li><i class="fas fa-check-double"></i><div><strong>Full Structural Reconstruction:</strong> Advanced chassis straightening and jig alignment to restore factory-spec integrity.</div></li>
+                            <li><i class="fas fa-check-double"></i><div><strong>Professional Body Work:</strong> Expert panel beating, dent removal, and component replacement for a flawless finish.</div></li>
+                            <li><i class="fas fa-check-double"></i><div><strong>Showroom-Quality Painting:</strong> State-of-the-art spray painting booth for a perfect, durable, and factory-matched paint job.</div></li>
+                        </ul>
+                        <a href="#contact-footer" class="btn">Get a Quote</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section id="why-choose-us" class="section">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll fade-in-up">WHY CHOOSE <span>HADIID</span></h2>
+                <p class="section-intro animate-on-scroll fade-in-up" style="transition-delay: 0.1s;">Our commitment to excellence ensures we deliver superior products and service. Here’s the advantage of partnering with us.</p>
+                <div class="why-grid">
+                    <div class="why-card animate-on-scroll fade-in-up" style="transition-delay: 0.2s;">
+                        <div class="icon"><i class="fa-solid fa-gears"></i></div>
+                        <h3>Modern Technology</h3>
+                        <p>We use premium components and the latest CAD technology to guarantee reliability and precision in every build.</p>
+                    </div>
+                     <div class="why-card animate-on-scroll fade-in-up" style="transition-delay: 0.3s;">
+                        <div class="icon"><i class="fa-solid fa-leaf"></i></div>
+                        <h3>Efficiency Focused</h3>
+                        <p>Our intelligent designs and modern materials create lighter, stronger bodies for increased payload and fuel savings.</p>
+                    </div>
+                     <div class="why-card animate-on-scroll fade-in-up" style="transition-delay: 0.4s;">
+                        <div class="icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                        <h3>Customer Partnership</h3>
+                        <p>Your success is our success. We work closely with you as a dedicated partner from start to finish.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="cta-services">
+            <div class="container">
+                <h2 class="animate-on-scroll fade-in-up">Have a Project in Mind?</h2>
+                <p class="animate-on-scroll fade-in-up" style="transition-delay: 0.1s;">Let's discuss how our expert fabrication and repair services can meet your specific needs. Contact us today for a detailed, no-obligation quote.</p>
+                <a href="#contact-footer" class="btn animate-on-scroll fade-in-up" style="transition-delay: 0.2s;">Request a Quote</a>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer id="contact" class="section">
+        <div class="container"><div class="footer-main"><div class="footer-col animate-on-scroll fade-in" style="transition-delay: 0.1s;"><a href="#hero" class="logo" style="font-size: 1.6rem; margin-bottom: 20px; display: inline-block;"><div class="logo-icon">H</div>HADIID</a><p>Your trusted partner in vehicle body building, fabrication, and repairs. We combine modern technology with expert craftsmanship to deliver unmatched quality.</p></div><div class="footer-col animate-on-scroll fade-in" style="transition-delay: 0.2s;"><h3>Quick Links</h3><ul><li><a href="#hero">Home</a></li><li><a href="#about-us">About Us</a></li><li><a href="#services-overview">Services</a></li><li><a href="#why-choose-us">Why Us</a></li></ul></div><div class="footer-col animate-on-scroll fade-in" style="transition-delay: 0.3s;"><h3>Contact Info</h3><ul><li><i class="fas fa-map-marker-alt"></i> Kampala road, Nairobi, Kenya</li><li><i class="fas fa-phone"></i> 0759 888 333 / 0759 999 666</li><li><i class="fas fa-envelope"></i> inquiries@hadiid.co.ke</li></ul></div><div class="footer-col animate-on-scroll fade-in" style="transition-delay: 0.4s;"><h3>Opening Hours</h3><ul><li><i class="fas fa-clock"></i> Mon - Fri: 8:00 AM - 5:00 PM</li><li><i class="fas fa-clock"></i> Saturday: 8:00 AM - 1:00 PM</li><li><i class="fas fa-times-circle"></i> Sunday: Closed</li></ul></div></div></div>
+        <div class="footer-bottom"><p>© 2024 HADIID INDUSTRIES LTD. All Rights Reserved.</p></div>
+    </footer>
+    <a href="#hero" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- Animate on Scroll Logic ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { 
+            threshold: 0.15 // Trigger when 15% of the element is visible
+        });
+        
+        document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+            observer.observe(el);
+        });
+    });
+</script>
+
+</body>
+</html>

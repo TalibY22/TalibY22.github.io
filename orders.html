@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your Order | HADIID INDUSTRIES LTD.</title>
+    
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link rel="stylesheet" href="main.css">
+   <style>
+        .page-header { padding: 120px 0; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://plus.unsplash.com/premium_photo-1661920574428-1f0f60cda474?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover; color: #fff; }
+        .page-header h1 { font-size: 3.5rem; color: #fff; }
+        .page-header p { font-size: 1.2rem; max-width: 600px; margin: 15px auto 0; color: rgba(255,255,255,0.9); }
+
+        /* --- Order Tracking Form --- */
+        .track-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--color-bg-alt);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+        }
+        #track-order-form { display: flex; gap: 15px; }
+        #order-number-input {
+            flex-grow: 1;
+            padding: 15px;
+            font-size: 1.1rem;
+            border: 2px solid var(--color-border);
+            border-radius: 50px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        #order-number-input:focus {
+            outline: none;
+            border-color: var(--brand-yellow);
+            box-shadow: 0 0 0 4px rgba(255,196,0,0.2);
+        }
+
+        /* --- Order Results Section --- */
+        #order-results-container {
+            display: none; /* Hidden by default */
+            margin-top: 60px;
+        }
+        .order-summary {
+            background: var(--color-bg-alt);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+            margin-bottom: 40px;
+        }
+        .order-summary h2 { margin-bottom: 20px; }
+        .order-summary h2 span { color: var(--brand-yellow); }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .summary-item strong {
+            display: block;
+            color: var(--color-text);
+            font-family: 'Poppins';
+            font-weight: 600;
+        }
+        .current-status {
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            background-color: rgba(25, 135, 84, 0.1);
+            color: var(--color-success);
+            border: 1px solid rgba(25, 135, 84, 0.2);
+        }
+
+        /* --- Timeline (Adapted from about.html) --- */
+        .timeline-container { position: relative; max-width: 1000px; margin: auto; }
+        .timeline-container::after { content: ''; position: absolute; width: 4px; background-color: var(--brand-yellow); top: 0; bottom: 0; left: 50%; margin-left: -2px; z-index: 1; }
+        .timeline-item { padding: 10px 40px; position: relative; background-color: inherit; width: 50%; }
+        .timeline-item::after { content: '\f0a4'; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; width: 30px; height: 30px; line-height: 30px; text-align: center; right: -17px; background-color: white; border: 4px solid var(--brand-yellow); top: 25px; border-radius: 50%; z-index: 2; color: var(--brand-yellow); }
+        .timeline-item.completed::after { content: '\f058'; color: var(--color-success); border-color: var(--color-success); }
+        .timeline-item.left { left: 0; }
+        .timeline-item.right { left: 50%; }
+        .timeline-item.right::after { left: -15px; }
+        .timeline-content { padding: 20px 30px; background-color: white; position: relative; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .timeline-content h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .timeline-content .date { font-weight: 600; color: var(--color-text-secondary); margin-bottom: 10px; display: block; }
+        .timeline-content img { width: 100%; border-radius: 8px; margin-top: 15px; }
+
+        .error-message {
+            text-align: center;
+            padding: 20px;
+            background: rgba(220, 53, 69, 0.1);
+            color: var(--color-error);
+            border: 1px solid rgba(220, 53, 69, 0.2);
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .timeline-container::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item.left, .timeline-item.right { left: 0%; }
+            .timeline-item.right::after { left: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+     <header>
+        <!-- Top Bar & Navbar (No change) -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="contact-details-top">
+                    <span><i class="fas fa-phone"></i> 0759 888 333</span>
+                    <span style="margin-left: 15px;"><i class="fas fa-envelope"></i> inquiries@hadiid.co.ke</span>
+                </div>
+                <div class="location-top">
+                    <span><i class="fas fa-map-marker-alt"></i> Kampala road, Nairobi</span>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar" id="navbar">
+            <div class="container">
+                <a href="#hero" class="logo">
+                    <div class="logo-icon">H</div>HADIID INDUSTRIES
+                </a>
+                <ul class="nav-links" id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="ligth-aboutsu.html">About Us</a></li>
+                    <li><a href="Ligth-services.html">Services</a></li>
+                    <li><a href="our-work.html">Our-work</a></li>
+                    
+                    <li><a href="">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                     <a href="orders.html" class="btn-outline btn-small">Track Order</a>
+                     <a href="#contact" class="btn btn-small">Get a Quote</a>
+                </div>
+                <button class="hamburger" id="hamburger-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Track Your Order</h1>
+                <p>Enter your order number below to see the real-time progress of your project.</p>
+            </div>
+        </section>
+
+        <section id="tracking-section" class="section">
+            <div class="container">
+                <div class="track-form-container">
+                    <form id="track-order-form">
+                        <input type="text" id="order-number-input" placeholder="(Use order number 1234 for test)" required>
+                        <button type="submit" class="btn">Track Order</button>
+                    </form>
+                </div>
+
+                <div id="order-results-container">
+                    <!-- This content will be generated by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+    
+   <footer id="contact" class="section">
+        <div class="container"><div class="footer-main"><div class="footer-col animate-on-scroll fade-in" style="transition-delay: 0.1s;"><a href="#hero" class="logo" style="font-size: 1.6rem; margin-bottom: 20px; display: inline-block;"><div class="logo-icon">H</div>HADIID</a><p>Your trusted partner in vehicle body building, fabrication, and repairs. We combine modern technology with expert craftsmanship to deliver unmatched quality.</p></div><div class="footer-col animate-on-scroll fade-in" style="transition-delay: 0.2s;"><h3>Quick Links</h3><ul><li><a href="#hero">Home</a></li><li><a href="#about-us">About Us</a></li><li><a href="#services-overview">Services</a></li><li><a href="#why-choose-us">Why Us</a></li></ul></div><div class="footer-col animate-on-scroll fade-in" style="transition-delay: 0.3s;"><h3>Contact Info</h3><ul><li><i class="fas fa-map-marker-alt"></i> Kampala road, Nairobi, Kenya</li><li><i class="fas fa-phone"></i> 0759 888 333 / 0759 999 666</li><li><i class="fas fa-envelope"></i> inquiries@hadiid.co.ke</li></ul></div><div class="footer-col animate-on-scroll fade-in" style="transition-delay: 0.4s;"><h3>Opening Hours</h3><ul><li><i class="fas fa-clock"></i> Mon - Fri: 8:00 AM - 5:00 PM</li><li><i class="fas fa-clock"></i> Saturday: 8:00 AM - 1:00 PM</li><li><i class="fas fa-times-circle"></i> Sunday: Closed</li></ul></div></div></div>
+        <div class="footer-bottom"><p>© 2024 HADIID INDUSTRIES LTD. All Rights Reserved.</p></div>
+    </footer>
+    <a href="#hero" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+</body>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // --- FAKE ORDER DATA (for demonstration purposes) ---
+    // In a real application, this would come from a server/database.
+    const orderData = {
+        '1234': {
+            vehicleType: 'Luxury Coach - Model S',
+            estimatedCompletion: '2024-10-25',
+            currentStatus: 'Painting & Finishing',
+            timeline: [
+                { stage: 'Order Confirmed', date: '2024-08-01', description: 'Your order was received and confirmed. All project details have been finalized with our engineering team.', image: null, completed: true },
+                { stage: 'Design Phase Complete', date: '2024-08-15', description: 'Our engineers have completed the detailed CAD blueprints and 3D models for your vehicle.', image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800', completed: true },
+                { stage: 'Chassis Fabrication', date: '2024-09-05', description: 'The main chassis and structural frame have been fabricated and assembled according to specifications.', image: 'https://i.imgur.com/e5oQjWl.jpg', completed: true },
+                { stage: 'Body Panel Assembly', date: '2024-09-20', description: 'Exterior and interior body panels are being fitted onto the chassis.', image: 'https://i.imgur.com/GzBfAFl.png', completed: true },
+                { stage: 'Painting & Finishing', date: 'Ongoing', description: 'The vehicle is currently in our state-of-the-art paint booth for primer, color, and clear coats.', image: null, completed: false },
+                { stage: 'Final Assembly & QA', date: 'Pending', description: 'Installation of windows, seats, electronics, and final quality assurance checks.', image: null, completed: false }
+            ]
+        },
+        '5678': {
+            vehicleType: 'Heavy-Duty Tipping Trailer',
+            estimatedCompletion: '2024-11-10',
+            currentStatus: 'Chassis Fabrication',
+            timeline: [
+                { stage: 'Order Confirmed', date: '2024-09-10', description: 'Your order for a custom tipping trailer was confirmed.', image: null, completed: true },
+                { stage: 'Design Phase Complete', date: '2024-09-18', description: 'Engineering blueprints for the tipping mechanism and trailer body are approved.', image: null, completed: true },
+                { stage: 'Chassis Fabrication', date: 'Ongoing', description: 'Our technicians are currently fabricating the main structural frame for the trailer.', image: 'https://i.imgur.com/e5oQjWl.jpg', completed: false },
+                { stage: 'Body Assembly', date: 'Pending', description: 'The main cargo body will be constructed and assembled.', image: null, completed: false },
+            ]
+        }
+    };
+
+    const form = document.getElementById('track-order-form');
+    const input = document.getElementById('order-number-input');
+    const resultsContainer = document.getElementById('order-results-container');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const orderNumber = input.value.trim();
+        
+        if (!orderNumber) return;
+
+        const data = orderData[orderNumber];
+
+        if (data) {
+            displayOrderDetails(orderNumber, data);
+        } else {
+            displayError();
+        }
+    });
+
+    function displayError() {
+        resultsContainer.innerHTML = `<div class="error-message"><i class="fas fa-exclamation-triangle"></i> Order not found. Please check the number and try again.</div>`;
+        resultsContainer.style.display = 'block';
+    }
+
+    function displayOrderDetails(orderNumber, data) {
+        let timelineHTML = '';
+        data.timeline.forEach((item, index) => {
+            const side = index % 2 === 0 ? 'left' : 'right';
+            const completedClass = item.completed ? 'completed' : '';
+            const imageHTML = item.image ? `<img src="${item.image}" alt="${item.stage}">` : '';
+            
+            timelineHTML += `
+                <div class="timeline-item ${side} ${completedClass}">
+                    <div class="timeline-content">
+                        <h3>${item.stage}</h3>
+                        <span class="date">Date: ${item.date}</span>
+                        <p>${item.description}</p>
+                        ${imageHTML}
+                    </div>
+                </div>
+            `;
+        });
+        
+        const resultsHTML = `
+            <div class="order-summary">
+                <h2>Tracking Order: <span>#${orderNumber}</span></h2>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <strong>Vehicle Type:</strong>
+                        <span>${data.vehicleType}</span>
+                    </div>
+                    <div class="summary-item">
+                        <strong>Estimated Completion:</strong>
+                        <span>${data.estimatedCompletion}</span>
+                    </div>
+                    <div class="summary-item" style="grid-column: 1 / -1;">
+                        <strong>Current Status:</strong>
+                        <div class="current-status">${data.currentStatus}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-container">
+                ${timelineHTML}
+            </div>
+        `;
+
+        resultsContainer.innerHTML = resultsHTML;
+        resultsContainer.style.display = 'block';
+    }
+});
+</script>
+
+</body>
+</html>

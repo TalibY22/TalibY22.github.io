@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About HADIID INDUSTRIES LTD. | Our Story, Vision & Process</title>
+    
+    <!-- Google Fonts: Poppins & Open Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- ALL STYLES ARE THE SAME AS HOMEPAGE FOR CONSISTENCY --- */
+       
+        /* --- Page Header --- */
+        .page-header {
+            padding: 120px 0;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            color: #fff;
+        }
+        .page-header h1 {
+            font-size: 3.5rem;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 15px auto 0;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* --- Story Section --- */
+        .story-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .story-layout img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        /* --- Vision & Mission Section --- */
+        .vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .vision-card {
+            background: var(--color-bg-alt);
+            padding: 40px;
+            border-radius: 10px;
+            border-left: 5px solid var(--brand-yellow);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .vision-card .icon {
+            font-size: 3rem;
+            color: var(--brand-yellow);
+            margin-bottom: 15px;
+        }
+        .vision-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        /* Core Values */
+        .values-grid {
+             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .value-item {
+            text-align: center;
+        }
+        .value-item .icon {
+            font-size: 2.5rem;
+            color: var(--brand-yellow);
+            margin-bottom: 10px;
+        }
+        .value-item h4 {
+            font-size: 1.2rem;
+        }
+        
+        /* --- Process Timeline Section --- */
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--brand-yellow);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            z-index: 1;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -15px;
+            background-color: white;
+            border: 4px solid var(--brand-yellow);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        .timeline-item.left { left: 0; }
+        .timeline-item.right { left: 50%; }
+        .timeline-item.right::after { left: -11px; }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .timeline-item.left .timeline-content { text-align: right; }
+        .timeline-content .step {
+            font-family: 'Poppins';
+            color: var(--brand-yellow);
+            font-weight: 700;
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .timeline-content h3 { font-size: 1.5rem; margin-bottom: 10px; }
+
+        /* --- Team Section --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .team-member {
+            background: var(--color-bg-alt);
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--brand-yellow);
+            margin-bottom: 20px;
+        }
+        .team-member h4 { font-size: 1.4rem; }
+        .team-member span {
+            display: block;
+            color: var(--brand-yellow);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* --- CTA Section --- */
+        #cta-about {
+            background: var(--brand-dark);
+            text-align: center;
+            padding: 80px 0;
+        }
+        #cta-about h2 {
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        #cta-about p {
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .story-layout { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2.5rem; }
+            /* Timeline stacks vertically */
+            .timeline-container::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item.left, .timeline-item.right { left: 0%; }
+            .timeline-item::after { left: 18px; }
+            .timeline-item.left .timeline-content, .timeline-item.right .timeline-content { text-align: left; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- Top Bar & Navbar (No change) -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="contact-details-top">
+                    <span><i class="fas fa-phone"></i> 0759 888 333</span>
+                    <span style="margin-left: 15px;"><i class="fas fa-envelope"></i> inquiries@hadiid.co.ke</span>
+                </div>
+                <div class="location-top">
+                    <span><i class="fas fa-map-marker-alt"></i> Kampala road, Nairobi</span>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar" id="navbar">
+            <div class="container">
+                <a href="#hero" class="logo">
+                    <div class="logo-icon">H</div>HADIID INDUSTRIES
+                </a>
+                <ul class="nav-links" id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="ligth-aboutsu.html">About Us</a></li>
+                    <li><a href="Ligth-services.html">Services</a></li>
+                    <li><a href="our-work.html">Our-work</a></li>
+                    
+                    <li><a href="contact-us.html">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                     <a href="orders.html" class="btn-outline btn-small">Track Order</a>
+                     <a href="#contact" class="btn btn-small">Get a Quote</a>
+                </div>
+                <button class="hamburger" id="hamburger-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>About HADIID Industries</h1>
+                <p>More than a workshop — we are your dedicated engineering partner, committed to driving the future of transport in Africa.</p>
+            </div>
+        </section>
+
+        <!-- Our Story Section -->
+        <section id="our-story" class="section">
+            <div class="container">
+                <div class="story-layout">
+                    <div>
+                        <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">OUR <span>STORY</span></h2>
+                        <p>HADIID Industries Ltd. was founded on a simple yet powerful idea: to revolutionize the African transport market by bridging the gap between global engineering standards and local operational needs. We saw an opportunity to provide world-class, durable, and efficient solutions that were custom-built for the unique challenges of African roads.</p>
+                        <p>Today, we are a dynamic team of passionate engineers, designers, and technicians. Our work is our craft, and we pour our expertise and dedication into every project, ensuring that our products don't just meet expectations—they set new benchmarks for quality and performance.</p>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" alt="Team collaborating on a project">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision & Mission Section -->
+        <section id="vision-mission" class="section section-alt">
+            <div class="container">
+                <div class="vision-grid">
+                    <div class="vision-card">
+                        <div class="icon"><i class="fas fa-eye"></i></div>
+                        <h3>Our Vision</h3>
+                        <p>To be the most trusted and innovative transport engineering partner in Africa, setting new standards for quality, durability, and efficiency that empower our clients and move the continent forward.</p>
+                    </div>
+                    <div class="vision-card">
+                        <div class="icon"><i class="fas fa-bullseye"></i></div>
+                        <h3>Our Mission</h3>
+                        <p>To fabricate superior vehicle bodies and provide expert repair services by integrating modern technology, sustainable practices, and an unwavering commitment to customer partnership and success.</p>
+                    </div>
+                </div>
+
+                <h2 class="section-title" style="margin-top: 80px;">OUR CORE <span>VALUES</span></h2>
+                 <div class="values-grid" style="margin-top: 40px;">
+                    <div class="value-item">
+                        <div class="icon"><i class="fa-solid fa-gem"></i></div>
+                        <h4>Quality & Craftsmanship</h4>
+                    </div>
+                    <div class="value-item">
+                        <div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
+                        <h4>Innovation</h4>
+                    </div>
+                    <div class="value-item">
+                        <div class="icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                        <h4>Partnership</h4>
+                    </div>
+                    <div class="value-item">
+                        <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h4>Integrity</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Process Timeline Section -->
+        <section id="our-process" class="section">
+            <div class="container">
+                <h2 class="section-title">OUR <span>PROCESS</span></h2>
+                <p class="section-intro">We believe in a transparent and collaborative process. From the first handshake to the final delivery, here’s how we turn your vision into reality.</p>
+                <div class="timeline-container">
+                    <!-- Item 1 -->
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <span class="step">STEP 01</span>
+                            <h3>Consultation & Discovery</h3>
+                            <p>We start by listening. Our experts work with you to understand your specific needs, operational challenges, and business goals.</p>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <span class="step">STEP 02</span>
+                            <h3>Design & Engineering</h3>
+                            <p>Using advanced CAD software, our engineers create detailed blueprints and 3D models, optimizing for strength, weight, and efficiency.</p>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <span class="step">STEP 03</span>
+                            <h3>Fabrication & Assembly</h3>
+                            <p>Our skilled technicians bring the designs to life, using premium materials and precision techniques in our state-of-the-art workshop.</p>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <span class="step">STEP 04</span>
+                            <h3>Quality Assurance</h3>
+                            <p>Every build undergoes rigorous testing and inspection to ensure it meets our high standards for safety, durability, and performance.</p>
+                        </div>
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <span class="step">STEP 05</span>
+                            <h3>Delivery & Handover</h3>
+                            <p>We ensure a smooth handover, providing all necessary documentation and a final walkthrough to guarantee your complete satisfaction.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">MEET THE <span>LEADERSHIP</span></h2>
+                <p class="section-intro">Our company is led by a team of experienced professionals dedicated to excellence and customer success.</p>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="https://i.imgur.com/81GsA0s.jpg" alt="Team Member 1">
+                        <h4>Aaden H.</h4>
+                        <span>Founder & Lead Engineer</span>
+                        <p>With over 20 years in the industry, Aaden's vision guides our commitment to innovative and robust engineering solutions.</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://i.imgur.com/eA8AAnW.jpg" alt="Team Member 2">
+                        <h4>Fatima O.</h4>
+                        <span>Operations Manager</span>
+                        <p>Fatima ensures that every project runs smoothly, from initial consultation to on-time delivery, guaranteeing client satisfaction.</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://i.imgur.com/k2Na4a1.jpg" alt="Team Member 3">
+                        <h4>Ken Mwangi</h4>
+                        <span>Head of Fabrication</span>
+                        <p>Ken leads our team of skilled technicians, overseeing the craftsmanship and quality control that define every HADIID build.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="cta-about">
+            <div class="container">
+                <h2>Ready to Build With the Best?</h2>
+                <p>Let's start a conversation about your next project. Our team is ready to help.</p>
+                <a href="index.html#contact" class="btn">Get a Free Quote</a>
+            </div>
+        </section>
+
+    </main>
+    
+   
+     <footer id="contact">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-col"><a href="index.html" class="logo" style="font-size: 1.6rem; margin-bottom: 20px; display: inline-block;"><div class="logo-icon">H</div>HADIID</a><p>Your trusted partner in vehicle body building, fabrication, and repairs. We combine modern technology with expert craftsmanship to deliver unmatched quality.</p></div>
+                <div class="footer-col"><h3>Quick Links</h3><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="our-work.html">Our Work</a></li></ul></div>
+                <div class="footer-col"><h3>Contact Info</h3><ul><li><i class="fas fa-map-marker-alt"></i> Kampala road, Nairobi, Kenya</li><li><i class="fas fa-phone"></i> 0759 888 333 / 0759 999 666</li><li><i class="fas fa-envelope"></i> inquiries@hadiid.co.ke</li></ul></div>
+                <div class="footer-col"><h3>Opening Hours</h3><ul><li><i class="fas fa-clock"></i> Mon - Fri: 8:00 AM - 5:00 PM</li><li><i class="fas fa-clock"></i> Saturday: 8:00 AM - 1:00 PM</li><li><i class="fas fa-times-circle"></i> Sunday: Closed</li></ul></div>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>© 2024 HADIID INDUSTRIES LTD. All Rights Reserved.</p></div>
+    </footer>
+
+</body>
+</html>
