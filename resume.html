@@ -3,710 +3,379 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talib Abdulwahab | Cybersecurity Analyst</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/your-fontawesome-kit-code.js" crossorigin="anonymous"></script> <!-- Optional: For icons, get a kit from FontAwesome -->
+    <title>talib.sh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #121212;
-            --surface-color: #1e1e1e;
-            --primary-color: #00d1ff;
-            --text-color: #e0e0e0;
-            --text-muted-color: #a0a0a0;
-            --border-color: #333;
+            --background: #0d0d0d;
+            --foreground: #00FF41;
+            --accent: #00d1ff;
+            --comment: #6a9955;
+            --command-color: #e0e0e0;
         }
 
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.7;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        h1, h2, h3 {
-            color: #ffffff;
-            font-weight: 600;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--primary-color);
+            background-color: var(--background);
+            color: var(--foreground);
+            font-family: 'Fira Code', monospace;
+            font-size: 16px;
+            line-height: 1.6;
+            overflow: hidden; /* Hide body scrollbars */
         }
         
-        section {
-            padding: 6rem 0;
-        }
-
-        /* --- Navigation Bar --- */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(18, 18, 18, 0.85);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #fff;
-            text-decoration: none;
-        }
-        
-        .nav-logo span {
-            color: var(--primary-color);
-        }
-
-        .nav-menu {
-            list-style: none;
-            display: flex;
-        }
-
-        .nav-item {
-            margin-left: 2rem;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 400;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--primary-color);
-        }
-
-        /* --- Hero Section --- */
-        #home {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-content .subtitle {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            min-height: 50px; /* To prevent layout shift during typing */
-        }
-        
-        .typing-cursor {
-            display: inline-block;
-            width: 3px;
-            background-color: var(--primary-color);
-            animation: blink 0.7s infinite;
-        }
-        @keyframes blink { 50% { opacity: 0; } }
-
-        .hero-content .summary {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            color: var(--text-muted-color);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: var(--primary-color);
-            color: #121212;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 5px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-top: 1rem;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 209, 255, 0.2);
-        }
-
-        /* --- About Section --- */
-        #about p {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-
-        /* --- Skills Section --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        .skill-category {
-            background: var(--surface-color);
-            padding: 2rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--primary-color);
-        }
-        .skill-category h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-        .skills-list {
-            list-style: none;
-        }
-        .skills-list li {
-            background-color: #333;
-            color: var(--text-color);
-            padding: 0.5rem 1rem;
-            margin-bottom: 0.5rem;
-            border-radius: 5px;
-            display: inline-block;
-            margin-right: 0.5rem;
-        }
-        
-        /* --- Experience Timeline --- */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 3px;
-            background: var(--border-color);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -1.5px;
-        }
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-        }
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            right: -10px;
-            background-color: var(--bg-color);
-            border: 4px solid var(--primary-color);
-            top: 25px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-        .left {
-            left: 0;
-        }
-        .right {
-            left: 50%;
-        }
-        .right::after {
-            left: -10px;
-        }
-        .timeline-content {
-            padding: 20px 30px;
-            background: var(--surface-color);
-            position: relative;
-            border-radius: 8px;
-        }
-        .timeline-content h3 {
-            font-size: 1.2rem;
-            color: var(--primary-color);
-        }
-        .timeline-content .date {
-            font-size: 0.9rem;
-            font-weight: 300;
-            color: var(--text-muted-color);
-            margin-bottom: 0.5rem;
+        /* Subtle CRT Scanline Effect */
+        body::after {
+            content: " ";
             display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(18, 18, 18, 0.1);
+            opacity: .1;
+            z-index: 2;
+            pointer-events: none;
+            background-image: repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(255, 255, 255, 0.05) 1px, rgba(255, 255, 255, 0.05) 2px);
         }
-        .timeline-content ul {
-            list-style-position: inside;
-            padding-left: 0;
-            color: var(--text-muted-color);
-        }
-        
-        /* --- Projects Section --- */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-        .project-card {
-            background: var(--surface-color);
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid var(--border-color);
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-        .project-content {
-            padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .project-content h3 {
-            margin-bottom: 0.5rem;
-        }
-        .project-content p {
-             flex-grow: 1;
-             color: var(--text-muted-color);
-             margin-bottom: 1rem;
-        }
-        .project-tags {
-            margin-bottom: 1.5rem;
-        }
-        .project-tags span {
-            background: #333;
-            color: var(--primary-color);
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            margin-right: 0.5rem;
-            display: inline-block;
-            margin-bottom: 0.5rem;
-        }
-        .project-links a {
-            color: var(--primary-color);
+
+        a {
+            color: var(--accent);
             text-decoration: none;
-            font-weight: 600;
         }
-        .project-links a:hover {
+
+        a:hover {
             text-decoration: underline;
         }
+        
+        #terminal {
+            height: 100vh;
+            padding: 15px;
+            overflow-y: auto;
+            word-wrap: break-word;
+            text-shadow: 0 0 5px var(--foreground);
+        }
 
-        /* --- Education & Certs Section --- */
-        .education-grid {
+        .output-area {
+            white-space: pre-wrap; /* Allows text to wrap */
+        }
+
+        .input-line {
+            display: flex;
+            align-items: center;
+        }
+        
+        .prompt span {
+            color: var(--accent);
+        }
+
+        .prompt {
+            margin-right: 8px;
+            white-space: nowrap; /* Prevent prompt from wrapping */
+        }
+        
+        #command-input {
+            background: transparent;
+            border: none;
+            color: var(--command-color);
+            font-family: 'Fira Code', monospace;
+            font-size: 1em;
+            flex-grow: 1;
+            outline: none;
+            caret-color: var(--foreground);
+            text-shadow: 0 0 5px var(--command-color);
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background-color: var(--foreground);
+            animation: blink 1s step-end infinite;
+            vertical-align: bottom;
+            box-shadow: 0 0 5px var(--foreground);
+        }
+
+        @keyframes blink {
+            from, to { background-color: transparent }
+            50% { background-color: var(--foreground); }
+        }
+
+        .output-title {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .output-list ul {
+            list-style-type: none;
+            padding-left: 1em;
+        }
+        .output-list li::before {
+            content: '- ';
+            color: var(--accent);
+        }
+        
+        .output-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            max-width: 800px;
-            margin: 0 auto;
+            grid-template-columns: 150px 1fr;
+            gap: 5px 15px;
         }
-        .education-item {
-            background: var(--surface-color);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--primary-color);
-        }
-        .education-item h3 {
-            margin: 0;
-            font-size: 1.2rem;
-        }
-        .education-item .institution {
-            color: var(--text-muted-color);
-            font-style: italic;
-        }
-        .education-item .date {
-            float: right;
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-        .education-item p {
-            margin-top: 0.5rem;
-        }
-
-        /* --- Footer --- */
-        .footer {
-            background: var(--surface-color);
-            padding: 3rem 0;
-            text-align: center;
-        }
-        .footer-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-        .footer-content p {
-            color: var(--text-muted-color);
-            margin-bottom: 1.5rem;
-        }
-        .contact-info a {
-            color: var(--primary-color);
-            text-decoration: none;
-            margin: 0 1rem;
-        }
-        .footer-bottom {
-            margin-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            padding-top: 1.5rem;
-            font-size: 0.9rem;
-            color: var(--text-muted-color);
+        .output-grid .key {
+            color: var(--accent);
+            text-align: right;
         }
         
-        /* --- Scroll Animations --- */
-        .reveal {
-            position: relative;
-            transform: translateY(50px);
-            opacity: 0;
-            transition: 1s all ease;
-        }
-        
-        .reveal.active {
-            transform: translateY(0);
-            opacity: 1;
+        .comment {
+            color: var(--comment);
         }
 
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            h2 { font-size: 2rem; }
-            .nav-menu {
-                display: none; /* Simplification for this example, could be a hamburger menu */
-            }
-            .timeline::after {
-                left: 20px;
-            }
-            .timeline-item {
-                width: 100%;
-                padding-left: 50px;
-                padding-right: 0;
-            }
-            .timeline-item::after {
-                left: 10px;
-            }
-            .right {
-                left: 0%;
-            }
-            .education-item .date {
-                float: none;
-                display: block;
-                margin-top: 0.5rem;
-            }
+        .error {
+            color: #ff4d4d;
         }
-
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="container">
-            <a href="#home" class="nav-logo">Talib<span>.</span></a>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-                <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
-                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
-                <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
-            </ul>
+    <div id="terminal" onclick="document.getElementById('command-input').focus();">
+        <div id="output-area"></div>
+        <div class="input-line">
+            <div class="prompt"><span>guest@talib.sh</span>:~$</div>
+            <input type="text" id="command-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+            <span class="cursor"></span>
         </div>
-    </nav>
-
-    <section id="home">
-        <div class="hero-content">
-            <h1>Talib Abdulwahab</h1>
-            <p class="subtitle"><span id="typing-text"></span><span class="typing-cursor"></span></p>
-            <p class="summary">Aspiring Cybersecurity Analyst with a strong foundation in networking, system administration, and backend development. Passionate about securing digital infrastructures and eager to contribute to a dynamic security team.</p>
-            <a href="#projects" class="btn">View My Work</a>
-        </div>
-    </section>
-
-    <section id="about" class="container reveal">
-        <h2>About Me</h2>
-        <p>
-            With hands-on experience in configuring firewalls, deploying EDR solutions, and managing secure networks, I bridge the gap between software development and cybersecurity. I'm proficient in Python, C#, and PHP, using frameworks like Django and Laravel to automate and script security operations. My passion lies in threat detection, vulnerability management, and secure system design, and I am committed to continuous learning and growth within the field of cybersecurity.
-        </p>
-    </section>
-
-    <section id="skills" class="container reveal">
-        <h2>Technical Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Languages & Frameworks</h3>
-                <ul class="skills-list">
-                    <li>Python</li>
-                    <li>C#</li>
-                    <li>PHP</li>
-                    <li>Go</li>
-                    <li>Django</li>
-                    <li>Laravel</li>
-                    <li>Django REST</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Security & Networking</h3>
-                <ul class="skills-list">
-                    <li>Firewall Config (WatchGuard, Sophos)</li>
-                    <li>Endpoint Detection & Response (EDR)</li>
-                    <li>Vulnerability Management</li>
-                    <li>Network Security</li>
-                    <li>Secure System Design</li>
-                    <li>VLANs & VPNs</li>
-                    <li>MikroTik Routers</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Tools & Platforms</h3>
-                <ul class="skills-list">
-                    <li>Zoho Suite (CRM, Creator)</li>
-                    <li>RESTful APIs</li>
-                    <li>Linux System Admin</li>
-                    <li>Git & GitHub</li>
-                    <li>Docker (Basics)</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience" class="container reveal">
-        <h2>Professional Experience</h2>
-        <div class="timeline">
-            <div class="timeline-item left reveal">
-                <div class="timeline-content">
-                    <h3>Network/Support Engineer</h3>
-                    <span class="date">Sep 2025 – Present</span>
-                    <h4>Outserve Technologies limited, Nairobi</h4>
-                    <ul>
-                        <li>Configured and maintained firewalls (WatchGuard, Sophos) and enterprise networks.</li>
-                        <li>Developed and integrated RESTful APIs with Zoho applications to automate workflows.</li>
-                        <li>Provided hands-on IT support and user training on security best practices.</li>
-                    </ul>
-                </div>
-            </div>
-             <div class="timeline-item right reveal">
-                <div class="timeline-content">
-                    <h3>Software Engineer</h3>
-                    <span class="date">Apr 2025 – Present</span>
-                    <h4>Veenet Africa, Nairobi</h4>
-                    <ul>
-                        <li>Developed a custom ISP billing system to manage subscriptions and payments.</li>
-                        <li>Integrated billing system with MikroTik routers to automate service activation/suspension.</li>
-                        <li>Collaborated with networking team on real-time network control protocols.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="timeline-item left reveal">
-                <div class="timeline-content">
-                    <h3>Intern</h3>
-                    <span class="date">Jun 2025 – Aug 2025</span>
-                    <h4>Fonexpress</h4>
-                    <ul>
-                        <li>Developed a paperless leave management system.</li>
-                        <li>Identified and addressed major security vulnerabilities in the company network.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="timeline-item right reveal">
-                <div class="timeline-content">
-                    <h3>Junior Software Engineer</h3>
-                    <span class="date">Jan 2025 – Jun 2025</span>
-                    <h4>Riset Software Systems</h4>
-                    <ul>
-                        <li>Developed a comprehensive leave management system, reducing paper usage.</li>
-                        <li>Enhanced overall cybersecurity by addressing network vulnerabilities.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="container reveal">
-        <h2>Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card reveal">
-                <div class="project-content">
-                    <h3>Endpoint Detection and Response (EDR)</h3>
-                    <p>A custom EDR solution for Linux systems that monitors processes, file system changes, and network activity with real-time alerting and remote command execution.</p>
-                    <div class="project-tags">
-                        <span>Go</span>
-                        <span>Linux</span>
-                        <span>Security</span>
-                        <span>System Monitoring</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/TalibY22/GO_EDR" target="_blank">View on GitHub →</a>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card reveal">
-                <div class="project-content">
-                    <h3>Bitcoin Wallet Tracker</h3>
-                    <p>A real-time Bitcoin wallet tracking system to monitor balances, transaction history, and wallet activity, featuring suspicious activity detection and detailed reporting.</p>
-                    <div class="project-tags">
-                        <span>Go</span>
-                        <span>Blockchain API</span>
-                        <span>Data Analysis</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" target="_blank">Code Unavailable</a>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card reveal">
-                <div class="project-content">
-                    <h3>eCommerce API</h3>
-                    <p>A robust and scalable RESTful eCommerce API handling product management, user authentication, shopping carts, orders, and payment integration.</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>Django</span>
-                        <span>Django REST</span>
-                        <span>API</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" target="_blank">Code Unavailable</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="education" class="container reveal">
-        <h2>Education & Certifications</h2>
-        <div class="education-grid">
-            <div class="education-item reveal">
-                <span class="date">2025</span>
-                <h3>CYBER SHUJAA SECURITY ANALYST</h3>
-                <p class="institution">Certification in Progress</p>
-            </div>
-            <div class="education-item reveal">
-                <span class="date">2025</span>
-                <h3>CISCO CERTIFIED ETHICAL HACKER</h3>
-                 <p class="institution">Certification in Progress</p>
-            </div>
-             <div class="education-item reveal">
-                <span class="date">2023 - 2025</span>
-                <h3>Pearson BTEC Higher National Diploma in IT</h3>
-                <p class="institution">Oshwal college</p>
-                <p>Awarded Distinction in All units</p>
-            </div>
-            <div class="education-item reveal">
-                <span class="date">2022 - 2023</span>
-                <h3>Pearson BTEC DIPLOMA IN INFORMATION technology</h3>
-                <p class="institution">Oshwal college</p>
-                <p>Awarded Distinction in All units</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <h3>Get In Touch</h3>
-                <p>I'm currently seeking new opportunities. Feel free to reach out!</p>
-                <div class="contact-info">
-                    <a href="mailto:yakubtalib70@gmail.com">yakubtalib70@gmail.com</a> |
-                    <a href="tel:+245700445982">+245 700445982</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2025 Talib Abdulwahab. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
+    </div>
 
     <script>
-    // --- Typing Effect ---
-    const roles = ["Cybersecurity Analyst", "Software Developer", "Network Engineer"];
-    let roleIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const typingTextElement = document.getElementById('typing-text');
+    document.addEventListener('DOMContentLoaded', () => {
+        const input = document.getElementById('command-input');
+        const outputArea = document.getElementById('output-area');
+        const terminal = document.getElementById('terminal');
+        let commandHistory = [];
+        let historyIndex = -1;
 
-    function type() {
-        const currentRole = roles[roleIndex];
-        if (isDeleting) {
-            typingTextElement.textContent = currentRole.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            typingTextElement.textContent = currentRole.substring(0, charIndex + 1);
-            charIndex++;
-        }
+        const commands = {
+            'help': () => `
+<span class="output-title">Available Commands:</span>
+<div class="output-grid">
+    <span class="key">help</span>      <span>Show this help message</span>
+    <span class="key">about</span>     <span>Display a summary about me</span>
+    <span class="key">skills</span>    <span>List my technical skills</span>
+    <span class="key">experience</span><span>Show my professional experience</span>
+    <span class="key">projects</span>  <span>List my key projects</span>
+    <span class="key">education</span> <span>Display my education and certs</span>
+    <span class="key">contact</span>   <span>Show my contact information</span>
+    <span class="key">social</span>    <span>Display social media links</span>
+    <span class="key">banner</span>    <span>Display the welcome banner</span>
+    <span class="key">clear</span>     <span>Clear the terminal screen</span>
+</div>`,
+            'banner': () => `
+<pre>
+████████╗ █████╗ ██╗     ██╗██╗██████╗ 
+╚══██╔══╝██╔══██╗██║     ██║██║██╔══██╗
+   ██║   ███████║██║     ██║██║██████╔╝
+   ██║   ██╔══██║██║     ██║██║██╔═══╝ 
+   ██║   ██║  ██║███████╗██║██║██║     
+   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝╚═╝╚═╝     
+</pre>
+<span class="comment"># Welcome to my interactive portfolio.</span>
+<span class="comment"># Type 'help' to see a list of available commands.</span>
+`,
+            'about': () => `
+<span class="output-title">About Me</span>
+With hands-on experience in configuring firewalls, deploying EDR solutions, and managing secure networks, I bridge the gap between software development and cybersecurity. 
 
-        let typeSpeed = 150;
-        if (isDeleting) {
-            typeSpeed /= 2;
-        }
+I'm proficient in Python, C#, and PHP, using frameworks like Django and Laravel to automate and script security operations. My passion lies in threat detection, vulnerability management, and secure system design, and I am committed to continuous learning and growth within the field of cybersecurity.
+`,
+            'skills': () => `
+<span class="output-title">Technical Skills</span>
+<div class="output-list">
+<span class="comment"># Languages & Frameworks</span>
+<ul>
+    <li>Python, C#, PHP, Go</li>
+    <li>Django, Laravel, Django REST</li>
+</ul>
+<span class="comment"># Security & Networking</span>
+<ul>
+    <li>Firewall Config (WatchGuard, Sophos)</li>
+    <li>Endpoint Detection & Response (EDR)</li>
+    <li>Vulnerability Management & Network Security</li>
+    <li>Secure System Design, VLANs & VPNs</li>
+    <li>MikroTik Routers</li>
+</ul>
+<span class="comment"># Tools & Platforms</span>
+<ul>
+    <li>Zoho Suite (CRM, Creator)</li>
+    <li>RESTful APIs, Linux System Admin</li>
+    <li>Git & GitHub, Docker (Basics)</li>
+</ul>
+</div>`,
+            'experience': () => `
+<span class="output-title">Professional Experience</span>
+<div class="output-list">
 
-        if (!isDeleting && charIndex === currentRole.length) {
-            typeSpeed = 2000; // Pause at the end of the word
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            roleIndex = (roleIndex + 1) % roles.length;
-            typeSpeed = 500; // Pause before starting new word
-        }
+<span class="comment"># Network/Support Engineer @ Outserve Technologies limited</span>
+<ul>
+    <li><span class="key">Date</span>      : Sep 2024 – Present</li>
+    <li><span class="key">Tasks</span>     : Configured and maintained firewalls (WatchGuard, Sophos) and enterprise networks.</li>
+    <li><span class="key"></span>          : Developed and integrated RESTful APIs with Zoho applications to automate workflows.</li>
+    <li><span class="key"></span>          : Provided hands-on IT support and user training on security best practices.</li>
+</ul>
 
-        setTimeout(type, typeSpeed);
-    }
-    
-    document.addEventListener('DOMContentLoaded', type);
+<span class="comment"># Software Engineer @ Veenet Africa</span>
+<ul>
+    <li><span class="key">Date</span>      : Apr 2025 – Present</li>
+    <li><span class="key">Tasks</span>     : Developed a custom ISP billing system to manage subscriptions and payments.</li>
+    <li><span class="key"></span>          : Integrated billing system with MikroTik routers to automate service activation/suspension.</li>
+    <li><span class="key"></span>          : Collaborated with networking team on real-time network control protocols.</li>
+</ul>
 
-    // --- Scroll Animations ---
-    function reveal() {
-        var reveals = document.querySelectorAll(".reveal");
+<span class="comment"># Intern @ Fonexpress</span>
+<ul>
+    <li><span class="key">Date</span>      : Jun 2024 – Aug 2024</li>
+    <li><span class="key">Tasks</span>     : Developed a paperless leave management system.</li>
+    <li><span class="key"></span>          : Identified and addressed major security vulnerabilities in the company network.</li>
+</ul>
 
-        for (var i = 0; i < reveals.length; i++) {
-            var windowHeight = window.innerHeight;
-            var elementTop = reveals[i].getBoundingClientRect().top;
-            var elementVisible = 150; // Distance from bottom of screen to trigger
-
-            if (elementTop < windowHeight - elementVisible) {
-                reveals[i].classList.add("active");
-            } else {
-                // Optional: remove to keep animation after first scroll
-                // reveals[i].classList.remove("active");
+<span class="comment"># Junior Software Engineer @ Riset Software Systems</span>
+<ul>
+    <li><span class="key">Date</span>      : Jan 2024 – Jun 2024</li>
+    <li><span class="key">Tasks</span>     : Developed a comprehensive leave management system, reducing paper usage.</li>
+    <li><span class="key"></span>          : Enhanced overall cybersecurity by addressing network vulnerabilities.</li>
+</ul>
+</div>`,
+            'projects': () => `
+<span class="output-title">Projects</span>
+<div class="output-list">
+<span class="comment"># Endpoint Detection and Response (EDR) [Go, Linux, Security]</span>
+<ul>
+    <li>A custom EDR solution for Linux that monitors processes, file changes, and network activity with real-time alerting and remote command execution.</li>
+    <li><a href="https://github.com/TalibY22/GO_EDR" target="_blank">View on GitHub →</a></li>
+</ul>
+<span class="comment"># Bitcoin Wallet Tracker [Go, Blockchain API]</span>
+<ul>
+    <li>A real-time system to monitor Bitcoin wallet balances, transaction history, and activity, featuring suspicious activity detection.</li>
+    <li><span class="error">Code Unavailable</span></li>
+</ul>
+<span class="comment"># eCommerce API [Python, Django, Django REST]</span>
+<ul>
+    <li>A robust and scalable RESTful eCommerce API handling products, users, carts, orders, and payment integration.</li>
+    <li><span class="error">Code Unavailable</span></li>
+</ul>
+</div>`,
+            'education': () => `
+<span class="output-title">Education & Certifications</span>
+<div class="output-grid">
+    <span class="key">In Progress</span>   <span>CYBER SHUJAA SECURITY ANALYST</span>
+    <span class="key">In Progress</span>   <span>CISCO CERTIFIED ETHICAL HACKER</span>
+    <span class="key">2023 - 2024</span>   <span>Pearson BTEC Higher National Diploma in IT (Oshwal College) - Distinction in All Units</span>
+    <span class="key">2022 - 2023</span>   <span>Pearson BTEC DIPLOMA IN IT (Oshwal College) - Distinction in All Units</span>
+</div>`,
+            'contact': () => `
+<span class="output-title">Contact Information</span>
+<div class="output-grid">
+    <span class="key">Email</span>     <span><a href="mailto:yakubtalib70@gmail.com">yakubtalib70@gmail.com</a></span>
+    <span class="key">Phone</span>     <span><a href="tel:+245700445982">+245 700445982</a></span>
+</div>`,
+            'social': () => `
+<span class="output-title">Social Links</span>
+<div class="output-grid">
+    <span class="key">GitHub</span>    <span><a href="https://github.com/TalibY22" target="_blank">github.com/TalibY22</a></span>
+    <span class="key">LinkedIn</span>  <span><a href="#" target="_blank">linkedin.com/in/your-profile</a> <span class="comment"># Update this link!</span></span>
+</div>`,
+            'clear': () => {
+                outputArea.innerHTML = '';
+                return '';
             }
-        }
-    }
+        };
 
-    window.addEventListener("scroll", reveal);
-    // Initial check on load
-    reveal();
+        const executeCommand = (cmd) => {
+            // Append the command line to the output
+            const promptHtml = `<div class="prompt"><span>guest@talib.sh</span>:~$</div>`;
+            const commandLine = document.createElement('div');
+            commandLine.classList.add('input-line');
+            commandLine.innerHTML = `${promptHtml}<div>${cmd}</div>`;
+            outputArea.appendChild(commandLine);
 
+            const output = document.createElement('div');
+            output.classList.add('output');
+
+            if (cmd in commands) {
+                output.innerHTML = commands[cmd]();
+            } else {
+                output.innerHTML = `<span class="error">Command not found: ${cmd}. Type 'help' for a list of commands.</span>`;
+            }
+            
+            outputArea.appendChild(output);
+            
+            // Scroll to the bottom
+            terminal.scrollTop = terminal.scrollHeight;
+        };
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const cmd = input.value.trim().toLowerCase();
+                input.value = '';
+                if (cmd === '') return;
+                
+                commandHistory.unshift(cmd);
+                historyIndex = -1;
+                
+                executeCommand(cmd);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (historyIndex < commandHistory.length - 1) {
+                    historyIndex++;
+                    input.value = commandHistory[historyIndex];
+                    input.setSelectionRange(input.value.length, input.value.length);
+                }
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (historyIndex > 0) {
+                    historyIndex--;
+                    input.value = commandHistory[historyIndex];
+                    input.setSelectionRange(input.value.length, input.value.length);
+                } else {
+                    historyIndex = -1;
+                    input.value = '';
+                }
+            }
+        });
+        
+        // Initial boot sequence
+        const boot = async () => {
+            await typeCommand("banner", 50);
+            await typeCommand("help", 50);
+            input.focus();
+        };
+
+        const typeCommand = (cmd, speed) => {
+            return new Promise(resolve => {
+                let i = 0;
+                const typingInterval = setInterval(() => {
+                    input.value += cmd[i];
+                    i++;
+                    if (i === cmd.length) {
+                        clearInterval(typingInterval);
+                        executeCommand(cmd);
+                        input.value = '';
+                        setTimeout(resolve, 300); // Pause between commands
+                    }
+                }, speed);
+            });
+        };
+
+        boot();
+    });
     </script>
 
 </body>
